@@ -12,18 +12,43 @@
           <li class="nav-item">
             <a class="nav-link text-white" href="#">Features</a>
           </li>
+
+          @auth
+
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">Pricing</a>
+            <a class="nav-link text-white" href="#">Aggiungi annuncio</a>
           </li>
+
+          @endauth
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown link
+              
+            @auth
+                Ciao {{ Auth::user()->name }}
+            @else
+                Ciao, accedi.
+            @endauth
+
             </a>
+
             <ul class="dropdown-menu text-white" >
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+
+              @guest
+
+              <li><a class="dropdown-item" href="{{route('register')}}">Registrati</a></li>
+              <li><a class="dropdown-item" href="{{route('login')}}">Accedi</a></li>
+
+              @else
+
+              <li><a class="dropdown-item" href="#" onclick="event.preventDefault();
+                document.querySelector('#form-logout').submit();">Logout</a></li>
+                <form id="form-logout" method="POST" action="{{route('logout')}}" class="d-none">@csrf</form>
+                  
+              @endguest
+
             </ul>
+
           </li>
         </ul>
       </div>
