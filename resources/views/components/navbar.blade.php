@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-lg d-flex justify-content-center fixed-top slide-in-top">
+  <nav class="navbar navbar-expand-lg d-flex justify-content-center fixed-top slide-in-top bg-dark">
     <div class="container-fluid navbarwidth">
       <img src="/imgblade/logoscritta.png" alt="logo" class="logo">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,7 +7,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav w-100 d-flex justify-content-end ">
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+            <a class="nav-link active text-white" aria-current="page" href="{{route('homePage')}}">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="#">Features</a>
@@ -16,7 +16,7 @@
           @auth
 
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">Aggiungi annuncio</a>
+            <a class="nav-link text-white" href="{{route('createAds')}}">Aggiungi annuncio</a>
           </li>
 
           @endauth

@@ -1,6 +1,11 @@
 <x-layout>
     <x-slot name=title>HomePage</x-slot>
-
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+    
     <header class="bgheader d-flex flex-column align-items-center justify-content-center text-white">
         <section class="title text-center">
             <h3 class="h5 fw-light">NOW YOU CAN FEEL THE HEAT</h3>

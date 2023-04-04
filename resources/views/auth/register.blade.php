@@ -1,6 +1,6 @@
 <x-layout>
 
-    <h1 class="text-center">Registrati</h1>
+    <h1 class="text-center mt-5">Registrati</h1>
 
 
     <div class="container">

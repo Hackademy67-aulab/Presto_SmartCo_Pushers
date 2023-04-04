@@ -1,6 +1,6 @@
 <x-layout>
 
-    <h1 class="text-center">Accedi</h1>
+    <h1 class="text-center mt-5">Accedi</h1>
 
 
     <div class="container">
