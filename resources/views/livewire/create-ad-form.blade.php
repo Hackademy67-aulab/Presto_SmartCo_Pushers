@@ -23,6 +23,13 @@
     </div>
 
 
+    <select wire:model.defer="category" class="form-select" aria-label="Default select example">
+        <option selected>Scegli la categoria</option>
+        @foreach ($categories as $category)
+        <option value="{{$category->id}}">{{$category->name}}</option>
+        @endforeach
+      </select>
+
     <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

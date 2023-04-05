@@ -3,14 +3,16 @@
 namespace App\Http\Livewire;
 
 use App\Models\Ad;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 class CreateAdForm extends Component
 {
     public $title;
     public $price;
     public $description;
+    public $category;
 
     protected $rules= [
         'title' => 'required|min:6',
@@ -31,7 +33,8 @@ class CreateAdForm extends Component
     {
         $this->validate();
 
-        Ad::create([
+        $category=Category::find($this->category);
+        $category->ads()->create([
             'title'=>$this->title,
             'price'=>$this->price,
             'description'=>$this->description,
@@ -46,6 +49,7 @@ class CreateAdForm extends Component
     {
         return view('livewire.create-ad-form');
     }
+
 
 
     // public function updated($propertyName)
