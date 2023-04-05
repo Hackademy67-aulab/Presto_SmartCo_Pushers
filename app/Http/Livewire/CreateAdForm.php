@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Ad;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CreateAdForm extends Component
@@ -33,7 +34,8 @@ class CreateAdForm extends Component
         Ad::create([
             'title'=>$this->title,
             'price'=>$this->price,
-            'description'=>$this->description
+            'description'=>$this->description,
+            'user_id'=>Auth::user()->id
         ]);
 
         $this->reset();
