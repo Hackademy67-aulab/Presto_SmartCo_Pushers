@@ -15,13 +15,13 @@ class CreateAdForm extends Component
     public $price;
     public $description;
     public $category;
-    public $image;
+    // public $images;
 
     protected $rules= [
         'title' => 'required|min:6',
         'price' => 'required|min:1',
         'description' =>'required|min:10',
-        'image' =>'required|mimes:jpeg,png,jpg,gif'
+        // 'images' =>'required|mimes:jpeg,png,jpg,gif'
     ];
 
     protected $messages =[
@@ -31,8 +31,8 @@ class CreateAdForm extends Component
         'price.min' => 'Il prezzo deve essere di almeno 1 cifra',
         'description.required'  => 'La descrizione è richiesta',
         'description.min'=> 'La descrizione deve essere di almeno 6 caratteri',
-        'image.required'  => 'La immagine è richiesta',
-        'image.mimes'  => 'La immagine deve essere dei formati jpeg,png,jpg,gif',
+        // 'images.required'  => 'La immagine è richiesta',
+        // 'images.mimes'  => 'La immagine deve essere dei formati jpeg,png,jpg,gif',
 
 
     ];
@@ -47,13 +47,21 @@ class CreateAdForm extends Component
             'title'=>$this->title,
             'price'=>$this->price,
             'description'=>$this->description,
-            'image'=>$this->image->store('public/image'),
+            // 'images'=>$this->images,
             'user_id'=>Auth::user()->id,
         ]);
 
+        // foreach ($this->images as $image) {
+        //     $image->store('public/image');
+        // }
+
         $this->reset();
         return redirect(route('homePage'))->with('message', 'Annuncio creato con successo!');
+
+
     }
+
+
 
     public function render()
     {
