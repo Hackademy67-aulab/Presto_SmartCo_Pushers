@@ -6,13 +6,16 @@ use App\Models\Ad;
 use Livewire\Component;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use Livewire\WithFileUploads;
 
 class CreateAdForm extends Component
 {
+    use WithFileUploads;
     public $title;
     public $price;
     public $description;
     public $category;
+    public $image;
 
     protected $rules= [
         'title' => 'required|min:6',
@@ -34,10 +37,12 @@ class CreateAdForm extends Component
         $this->validate();
 
         $category=Category::find($this->category);
+
         $category->ads()->create([
             'title'=>$this->title,
             'price'=>$this->price,
             'description'=>$this->description,
+            'photo'=>$this->image->store('public/image'),
             'user_id'=>Auth::user()->id
         ]);
 

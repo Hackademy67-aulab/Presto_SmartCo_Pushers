@@ -23,6 +23,6 @@
 
 
     
-  @livewireScripts
+  @livewireScripts()
 </body>
 </html>
