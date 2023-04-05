@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PublicController extends Controller
@@ -17,7 +18,12 @@ class PublicController extends Controller
     public function createAds(){
         return view('createAds');
     }
+    
+    public function categoryAds(Category $category){
 
+        return view('categoryAds',compact('category'));
+    }
+    
 
 }
 

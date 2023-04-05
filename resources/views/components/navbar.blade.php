@@ -12,7 +12,19 @@
           <li class="nav-item">
             <a class="nav-link text-white" href="#">Features</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              
+            Categorie
+            </a>
 
+            <ul class="dropdown-menu text-white" >
+            @foreach($categories as $category)
+              <li><a class="dropdown-item" href="{{route('categoryAds', compact('category'))}}">{{$category->name}}</a></li>
+            @endforeach
+            </ul>
+
+          </li>
           @auth
 
           <li class="nav-item">
@@ -50,6 +62,7 @@
             </ul>
 
           </li>
+
         </ul>
       </div>
     </div>

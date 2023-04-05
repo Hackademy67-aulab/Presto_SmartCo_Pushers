@@ -20,7 +20,8 @@ class CreateAdForm extends Component
     protected $rules= [
         'title' => 'required|min:6',
         'price' => 'required|min:1',
-        'description' =>'required|min:10'
+        'description' =>'required|min:10',
+        'image' =>'required|mimes:jpeg,png,jpg,gif'
     ];
 
     protected $messages =[
@@ -30,6 +31,10 @@ class CreateAdForm extends Component
         'price.min' => 'Il prezzo deve essere di almeno 1 cifra',
         'description.required'  => 'La descrizione è richiesta',
         'description.min'=> 'La descrizione deve essere di almeno 6 caratteri',
+        'image.required'  => 'La immagine è richiesta',
+        'image.mimes'  => 'La immagine deve essere dei formati jpeg,png,jpg,gif',
+
+
     ];
 
     public function store()
@@ -42,8 +47,8 @@ class CreateAdForm extends Component
             'title'=>$this->title,
             'price'=>$this->price,
             'description'=>$this->description,
-            'photo'=>$this->image->store('public/image'),
-            'user_id'=>Auth::user()->id
+            'image'=>$this->image->store('public/image'),
+            'user_id'=>Auth::user()->id,
         ]);
 
         $this->reset();

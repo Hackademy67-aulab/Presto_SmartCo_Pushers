@@ -25,6 +25,8 @@
     <div class="mb-3">
         <label for="formFile" class="form-label">Inserisci immagine</label>
         <input wire:model.lazy="image" class="form-control" type="file" id="formFile" accept="image/jpg,image/jpng,image/webp">
+        @error('image') <span class="error">{{$message}}</span> @enderror
+
       </div>
 
     <select wire:model.defer="category" class="form-select" aria-label="Default select example">
