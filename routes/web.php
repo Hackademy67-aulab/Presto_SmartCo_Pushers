@@ -24,3 +24,5 @@ Route::get('/category/{category}',[PublicController::class, 'categoryAds'])->nam
 
 
 Route::get('/dettaglio/{ad}',[PublicController::class, 'detailAd'])->name('detailAd');
+
+Route::get('/lavoraconnoi',[PublicController::class, 'lavoraConnoi'])->name('lavoraConnoi');

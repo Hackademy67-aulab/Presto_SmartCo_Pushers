@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-lg d-flex justify-content-center fixed-top slide-in-top ">
+  <nav class="navbar navbar-expand-lg d-flex justify-content-center fixed-top slide-in-top bg-dark ">
     <div class="container-fluid navbarwidth">
       <img src="/imgblade/logoscritta.png" alt="logo" class="logo">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,11 +31,13 @@
             <a class="nav-link text-white" href="{{route('createAds')}}">Aggiungi annuncio</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link text-white" href="">Lavora con noi</a>
-          </li>
+          
 
           @endauth
+           
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{{route('lavoraConnoi')}}">Lavora con noi</a>
+          </li>
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,6 +47,8 @@
             @else
                 Ciao, accedi.
             @endauth
+
+            
 
             </a>
 
