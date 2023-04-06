@@ -32,20 +32,20 @@ class PublicController extends Controller
     }
 
     public function detailAd(Ad $ad){
-        
-            
+
+
             return view('detailAd',compact('ad'));
-        
+
     }
 
     public function lavoraConnoi(){
         if (!Auth::user()) {
-            FacadesSession::flash('awe', "Devi prima registrati");
-            return view('auth.login');
+            FacadesSession::flash('lavoraConNoi', "Per poter entrare a far parte del nostro team, devi prima registrati");
+            return view('auth.register');
         }else{
-            
+
             return view('lavoraconnoi');
         }
-        
+
     }
 }

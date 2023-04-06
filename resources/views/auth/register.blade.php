@@ -1,50 +1,93 @@
 <x-layout>
+  <script  src="https://code.jquery.com/jquery-3.1.1.min.js"  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" ></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+  <link rel="stylesheet" href="/register.css">
+  <x-slot name=title>{{Route::currentRouteName()}}</x-slot>
 
-    <h1 class="text-center mt-5">Registrati</h1>
+  @if (Session::has('lavoraConNoi'))
+  <div class="w-100 d-flex justify-content-center">
+    <div class="alert alert-info text-center px-5" style="margin-top:15rem; width:fit-content; border-radius:10px; position:absolute">{{ Session::get('lavoraConNoi') }}</div>
+  </div>
+  @endif
 
-    @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6">
-
-     <form method="POST" action="{{route('register')}}">
-
-        @csrf
-
-        <div class="mb-3">
-            <label for="exampleInputText" class="form-label">Nome Cognome</label>
-            <input name="name" type="text" class="form-control" id="exampleInputText" aria-describedby="textHelp">
+  <section class="bg-body">
+  <div class="body">
+    <div class="veen">
+      <div class="login-btn splits">
+        <p>Already an user?</p>
+        <button class="active">Login</button>
+      </div>
+      <div class="rgstr-btn splits">
+        <p>Don't have an account?</p>
+        <button>Register</button>
+      </div>
+      <div class="wrapper">
+        <form id="login" tabindex="500" method="POST" action="{{ route('login') }}">
+          @csrf
+          <h3>Login</h3>
+          <div class="mail">
+            <input type="mail" name="email">
+            <label>Mail</label>
           </div>
 
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email</label>
-          <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input name="password" type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Conferma password</label>
-            <input name="password_confirmation"  type="password" class="form-control" id="exampleInputPassword1">
+          <div class="passwd">
+            <input type="password" name="password">
+            <label>Password</label>
           </div>
 
+          <div class="submit">
+            <button  type="submit" class="dark" id=login2>Login</button>
+          </div>
+        </form>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+        <form id="register" tabindex="502" method="POST" action="{{ route('register') }}">
+          @csrf
+          <h3>Register</h3>
+          <div class="name">
+            <input type="text" name="name">
+            <label>Nome e cognome</label>
+          </div>
+          <div class="mail">
+            <input type="mail" name="email">
+            <label>Mail</label>
+          </div>
 
+          <div class="passwd">
+            <input type="password" name="password">
+            <label>Password</label>
+          </div>
 
-            </div>
-        </div>
+          <div class="passwdregister">
+            <input type="password" name="password_confirmation">
+            <label>Conferma password</label>
+          </div>
+
+          <div class="submit">
+            <button type="submit" class="dark">Register</button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 
-
+</section>
+  <script src="/register.js"></script>
+  <style type="text/css">
+    .site-link{
+      padding: 5px 15px;
+      position: fixed;
+      z-index: 99999;
+      background: #fff;
+      box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+      right: 30px;
+      bottom: 30px;
+      border-radius: 10px;
+    }
+    .site-link img{
+      width: 30px;
+      height: 30px;
+    }
+  </style>
 </x-layout>

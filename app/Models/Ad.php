@@ -22,10 +22,20 @@ class Ad extends Model
 
     }
 
-    
+
     public function category(){
 
         return $this-> belongsTo(Category::class);
 
     }
+
+    public static function  contaAnnunciDaRevisionare(){
+        return Ad::where('is_accepted', null)->count();
+    }
+
+    public static function  secisonoannuncidarevisionare(){
+        return Ad::where('is_accepted', null);
+    }
+
+
 }

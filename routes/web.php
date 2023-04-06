@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\RevisorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +27,5 @@ Route::get('/category/{category}',[PublicController::class, 'categoryAds'])->nam
 Route::get('/dettaglio/{ad}',[PublicController::class, 'detailAd'])->name('detailAd');
 
 Route::get('/lavoraconnoi',[PublicController::class, 'lavoraConnoi'])->name('lavoraConnoi');
+
+Route::get('/zonarevisore',[RevisorController::class, 'zona_revisore'])->name('zona_revisore');

@@ -16,7 +16,7 @@
     @livewireStyles
 
   </head>
-  <body>
+  <body class="fade-in" id="body">
 
     <x-navbar/>
 
