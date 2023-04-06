@@ -21,6 +21,7 @@ class CreateAdForm extends Component
         'title' => 'required|min:6',
         'price' => 'required|min:1',
         'description' =>'required|min:10',
+        'category' =>'required'
         // 'images' =>'required|mimes:jpeg,png,jpg,gif'
     ];
 
@@ -31,6 +32,7 @@ class CreateAdForm extends Component
         'price.min' => 'Il prezzo deve essere di almeno 1 cifra',
         'description.required'  => 'La descrizione è richiesta',
         'description.min'=> 'La descrizione deve essere di almeno 6 caratteri',
+        'category.required'  => 'La categoria è richiesta',
         // 'images.required'  => 'La immagine è richiesta',
         // 'images.mimes'  => 'La immagine deve essere dei formati jpeg,png,jpg,gif',
 

@@ -1,7 +1,7 @@
 <div>
     <form wire:submit.prevent="store" class="p-5 shadow">
 
-                
+
     <div class="form-group">
         <label for="exampleInputTitle">Titolo</label>
         <input wire:model.lazy="title" type="text" class="form-control" id="exampleInputTitle" aria-describedby="titleHelp">
@@ -28,13 +28,16 @@
         @error('images') <span class="error">{{$message}}</span> @enderror
 
       </div> --}}
-
+    <div class="form-group my-4">
     <select wire:model.defer="category" class="form-select" aria-label="Default select example">
         <option selected>Scegli la categoria</option>
         @foreach ($categories as $category)
         <option value="{{$category->id}}">{{$category->name}}</option>
         @endforeach
       </select>
+      @error('category') <span class="error">{{$message}}</span> @enderror
+    </div>
+
 
     <button type="submit" class="btn btn-primary">Submit</button>
     </form>

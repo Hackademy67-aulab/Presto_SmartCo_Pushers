@@ -10,9 +10,9 @@ class PublicController extends Controller
 {
     public function home () {
 
-        $ads=Ad::take(4)->get()->sortByDesc('created_at');
-
+        $ads=Ad::orderByDesc('created_at')->take(6)->get();
         return view('welcome',compact('ads'));
+
     }
 
     public function createAds(){
