@@ -1,11 +1,11 @@
 <x-layout>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="card-title">{{$ad->title}}</h1>
-            </div>
-            <div class="col-12 col-md-4">
-                
+    <div class="container-fluid mt-5 pt-5">
+        <div class="row justify-content-center">
+            {{-- <div class="col-12 ">
+                <h1 class="card-title text-center">{{$ad->title}}</h1>
+            </div> --}}
+            <div class="col-5 d-flex-justify-content-center">
+
                 <div class="card" style="width: 18rem;">
                     {{-- <img src="{{Storage::url($ad->image)}}" class="card-img-top" alt="..."> --}}
 
@@ -32,7 +32,7 @@
                       </div>
 
                     <div class="card-body">
-                      
+
                       <p class="card-text">{{$ad->price}}</p>
                       <p class="card-text">{{$ad->description}}</p>
                       <p class="card-text">{{$ad->category->name}}</p>
