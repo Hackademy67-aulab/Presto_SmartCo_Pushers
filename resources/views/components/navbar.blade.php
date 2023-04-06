@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-lg d-flex justify-content-center fixed-top slide-in-top bg-dark">
+  <nav class="navbar navbar-expand-lg d-flex justify-content-center fixed-top slide-in-top ">
     <div class="container-fluid navbarwidth">
       <img src="/imgblade/logoscritta.png" alt="logo" class="logo">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,7 +14,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              
+
             Categorie
             </a>
 
@@ -31,11 +31,15 @@
             <a class="nav-link text-white" href="{{route('createAds')}}">Aggiungi annuncio</a>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link text-white" href="">Lavora con noi</a>
+          </li>
+
           @endauth
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              
+
             @auth
                 Ciao {{ Auth::user()->name }}
             @else
@@ -56,7 +60,7 @@
               <li><a class="dropdown-item" href="#" onclick="event.preventDefault();
                 document.querySelector('#form-logout').submit();">Logout</a></li>
                 <form id="form-logout" method="POST" action="{{route('logout')}}" class="d-none">@csrf</form>
-                  
+
               @endguest
 
             </ul>

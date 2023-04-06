@@ -1,7 +1,13 @@
 <x-layout>
 
+
     <h1 class="text-center mt-5">Registrati</h1>
 
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
     <div class="container">
         <div class="row justify-content-center">
@@ -30,7 +36,7 @@
             <label for="exampleInputPassword1" class="form-label">Conferma password</label>
             <input name="password_confirmation"  type="password" class="form-control" id="exampleInputPassword1">
           </div>
-  
+
 
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
@@ -40,5 +46,5 @@
         </div>
     </div>
 
-    
+
 </x-layout>

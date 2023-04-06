@@ -2,7 +2,10 @@
 
     <h1 class="text-center mt-5">Accedi</h1>
 
-
+    @if (Session::has('awe'))
+   <div class="alert alert-info">{{ Session::get('awe') }}</div>
+@endif
+<a class="nav-link active text-dark" aria-current="page" href="{{route('homePage')}}">Home</a>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-6">
@@ -21,7 +24,7 @@
           <input name="password" type="password" class="form-control" id="exampleInputPassword1">
         </div>
 
-      
+
 
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
@@ -31,5 +34,5 @@
         </div>
     </div>
 
-    
+
 </x-layout>

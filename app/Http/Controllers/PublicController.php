@@ -4,18 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Ad;
 use App\Models\Category;
+use Illuminate\Contracts\Session\Session as ContractsSessionSession;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session as FacadesSession;
+use Session;
+use Symfony\Component\HttpFoundation\Session\Session as SessionSession;
 
 class PublicController extends Controller
 {
     public function home () {
 
-        $ads=Ad::orderByDesc('created_at')->take(6)->get();
+        $ads=Ad::take(6)->orderByDesc('created_at')->get();
+        // $ads=Ad::take(6)->get()->sortByDesc('created_at');
         return view('welcome',compact('ads'));
 
     }
 
     public function createAds(){
+
         return view('createAds');
     }
 
@@ -25,6 +32,10 @@ class PublicController extends Controller
     }
 
     public function detailAd(Ad $ad){
-        return view('detailAd',compact('ad'));
+        if (!Auth::user()) {
+            FacadesSession::flash('awe', "Devi prima registrati");
+            return view('auth.login');
+        } else{return view('detailAd',compact('ad'));}
+
     }
 }
