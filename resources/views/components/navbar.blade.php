@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-lg d-flex justify-content-center fixed-top slide-in-top bg-dark" style="position: absolute">
+  <nav class="navbar navbar-expand-lg d-flex justify-content-center slide-in-top fixed-top">
     <div class="container-fluid navbarwidth">
       <img src="/imgblade/logoscritta.png" alt="logo" class="logo">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,16 +34,16 @@
 
 
           @endauth
-
-          @if (Auth::user('is_revisor'))
+          @auth
+          @if (Auth::user()->is_revisor == 1)
             <li class="nav-item">
               <a class="nav-link text-white  {{(App\Models\Ad::contaAnnunciDaRevisionare()) ? 'vibrate-1' : ''}}" href="{{ route('zona_revisore')}}">Zona revisore <span class="p-0 alert alert-danger" style="position: relative; bottom:15px; display: inline; font-size:13px">{{App\Models\Ad::contaAnnunciDaRevisionare()}}</span></a>
             </li>
 
           @endif
-
+          @endauth
           <li class="nav-item">
-            <a class="nav-link text-white" href="{{route('lavoraConnoi')}}">Lavora con noi</a>
+            <a class="nav-link text-white" href="{{route('becomeRevisor')}}">Lavora con noi</a>
           </li>
 
           <li class="nav-item dropdown">

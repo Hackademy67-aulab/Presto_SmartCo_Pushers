@@ -26,10 +26,14 @@ Route::get('/category/{category}',[PublicController::class, 'categoryAds'])->nam
 
 Route::get('/dettaglio/{ad}',[PublicController::class, 'detailAd'])->name('detailAd');
 
-Route::get('/lavoraconnoi',[PublicController::class, 'lavoraConnoi'])->name('lavoraConnoi');
-
 Route::get('/zonarevisore',[RevisorController::class, 'zona_revisore'])->name('zona_revisore');
 
 Route::patch('/accetta/annuncio/{ad}',[RevisorController::class, 'accettaad'])->name('revisor.accept_ad');
 
 Route::patch('/rifiuta/annuncio/{ad}',[RevisorController::class, 'rifiutaad'])->name('revisor.reject_ad');
+
+Route::get('/richiesta-revisore', [RevisorController::class, 'becomerevisor'])->name('becomeRevisor');
+
+Route::get('/rendi-revisore/{user}', [RevisorController::class, 'makerevisor'])->name('makeRevisor');
+
+

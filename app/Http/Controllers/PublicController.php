@@ -15,7 +15,8 @@ class PublicController extends Controller
 {
     public function home () {
 
-        $ads=Ad::take(6)->orderByDesc('created_at')->get();
+        $ads=Ad::where('is_accepted', true)->take(6)->orderByDesc('created_at')->get();
+        
         // $ads=Ad::take(6)->get()->sortByDesc('created_at');
         return view('welcome',compact('ads'));
 
@@ -34,18 +35,9 @@ class PublicController extends Controller
     public function detailAd(Ad $ad){
 
 
-            return view('detailAd',compact('ad'));
+        return view('detailAd',compact('ad'));
 
     }
 
-    public function lavoraConnoi(){
-        if (!Auth::user()) {
-            FacadesSession::flash('lavoraConNoi', "Per poter entrare a far parte del nostro team, devi prima registrati");
-            return view('auth.register');
-        }else{
 
-            return view('lavoraconnoi');
-        }
-
-    }
 }
