@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Ad extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
     protected $fillable = [
         'title',
         'price',
@@ -17,16 +18,12 @@ class Ad extends Model
     ];
 
     public function user(){
-
         return $this-> belongsTo(User::class);
-
     }
 
 
     public function category(){
-
         return $this-> belongsTo(Category::class);
-
     }
 
     public static function  contaAnnunciDaRevisionare(){
@@ -41,6 +38,19 @@ class Ad extends Model
         $this->is_accepted=$value;
         $this->save();
         return true;
+    }
+
+    public function toSearchableArray()
+    {
+        $category = $this->category;
+        $array = [
+            'id' => $this->id,
+            'title' => $this->title,
+            'price' => $this->price,
+            'description' => $this->description,
+            'category' => $category,
+        ];
+        return $array;
     }
 
 

@@ -14,29 +14,31 @@ use Symfony\Component\HttpFoundation\Session\Session as SessionSession;
 class PublicController extends Controller
 {
     public function home () {
-
         $ads=Ad::where('is_accepted', true)->take(6)->orderByDesc('created_at')->get();
-        
         // $ads=Ad::take(6)->get()->sortByDesc('created_at');
         return view('welcome',compact('ads'));
-
     }
 
     public function createAds(){
-
         return view('createAds');
     }
 
     public function categoryAds(Category $category){
-
         return view('categoryAds',compact('category'));
     }
 
     public function detailAd(Ad $ad){
-
-
         return view('detailAd',compact('ad'));
+    }
 
+    public function showad(){
+        $ads=Ad::where('is_accepted', true)->orderByDesc('created_at')->get();
+        return view('ad.showad',compact('ads'));
+    }
+
+    public function searchAd(Request $request){
+        $ads=Ad::search($request->searched)->where('is_accepted', true)->paginate(10);
+        return view('ad.showad',compact('ads'));
     }
 
 

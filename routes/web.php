@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[PublicController::class, 'home'])->name('homePage');
 
 Route::get('/create-ads',[PublicController::class, 'createAds'])->name('createAds');
-
-
-
+Route::get('/TuttiGliAnnunci',[PublicController::class, 'showad'])->name('showad');
 Route::get('/category/{category}',[PublicController::class, 'categoryAds'])->name('categoryAds');
 
 
@@ -37,3 +35,5 @@ Route::get('/richiesta-revisore', [RevisorController::class, 'becomerevisor'])->
 Route::get('/rendi-revisore/{user}', [RevisorController::class, 'makerevisor'])->name('makeRevisor');
 
 
+// Ricerca annuncio
+Route::get('/RicercaAnnuncio',[PublicController::class, 'searchAd'])->name('searchAd');

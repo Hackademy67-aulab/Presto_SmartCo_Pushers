@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-lg d-flex justify-content-center slide-in-top fixed-top">
+  <nav class="navbar navbar-expand-lg d-flex justify-content-center slide-in-top fixed-top bg-dark">
     <div class="container-fluid navbarwidth">
       <img src="/imgblade/logoscritta.png" alt="logo" class="logo">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,11 +6,17 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav w-100 d-flex justify-content-end ">
+
+              <form class="d-flex" role="search" method="GET" action="{{ route('searchAd') }}">
+                <input  name="searched" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+
           <li class="nav-item">
             <a class="nav-link active text-white" aria-current="page" href="{{route('homePage')}}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">Features</a>
+            <a class="nav-link text-white" href="{{ route('showad') }}">Tutti gli annunci</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
