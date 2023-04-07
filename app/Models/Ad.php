@@ -37,5 +37,11 @@ class Ad extends Model
         return Ad::where('is_accepted', null);
     }
 
+    public function setAccepted($value){
+        $this->is_accepted=$value;
+        $this->save();
+        return true;
+    }
+
 
 }

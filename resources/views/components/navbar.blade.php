@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-lg d-flex justify-content-center fixed-top slide-in-top" style="position: absolute">
+  <nav class="navbar navbar-expand-lg d-flex justify-content-center fixed-top slide-in-top bg-dark" style="position: absolute">
     <div class="container-fluid navbarwidth">
       <img src="/imgblade/logoscritta.png" alt="logo" class="logo">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

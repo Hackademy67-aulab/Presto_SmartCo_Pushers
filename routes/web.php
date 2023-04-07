@@ -29,3 +29,7 @@ Route::get('/dettaglio/{ad}',[PublicController::class, 'detailAd'])->name('detai
 Route::get('/lavoraconnoi',[PublicController::class, 'lavoraConnoi'])->name('lavoraConnoi');
 
 Route::get('/zonarevisore',[RevisorController::class, 'zona_revisore'])->name('zona_revisore');
+
+Route::patch('/accetta/annuncio/{ad}',[RevisorController::class, 'accettaad'])->name('revisor.accept_ad');
+
+Route::patch('/rifiuta/annuncio/{ad}',[RevisorController::class, 'rifiutaad'])->name('revisor.reject_ad');
