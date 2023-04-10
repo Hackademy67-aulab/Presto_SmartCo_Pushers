@@ -7,24 +7,26 @@
   <x-slot name=title>{{Route::currentRouteName()}}</x-slot>
 
   @if (Session::has('lavoraConNoi'))
-  <div class="w-100 d-flex justify-content-center">
-    <div class="alert alert-info text-center px-5" style="margin-top:15rem; width:fit-content; border-radius:10px; position:absolute">{{ Session::get('lavoraConNoi') }}</div>
+  <div class="w-100 d-flex justify-content-center ">
+    <div class="alert alert-info text-center px-5 shadow" style="margin-top:15rem; width:fit-content; border-radius:10px; position:absolute; color:#999">{{ Session::get('lavoraConNoi') }}</div>
   </div>
   @endif
 
   <section class="bg-body">
-  <div class="body">
+
+  <div class="" >
+    <div class="body " style="background-image:url(/imgblade/oooscillate.jpg); background-repeat:no-repeat; background-position-x:center; background-size:100%">
     <div class="veen">
       <div class="login-btn splits">
-        <p>Already an user?</p>
-        <button class="active">Login</button>
+        <p style="color:#999">Already an user?</p>
+        <button class="active" style="color:#999">Login</button>
       </div>
-      <div class="rgstr-btn splits">
-        <p>Don't have an account?</p>
-        <button>Register</button>
+      <div class="rgstr-btn splits ">
+        <p style="color:#999">Don't have an account?</p>
+        <button style="color:#999">Register</button>
       </div>
-      <div class="wrapper">
-        <form id="login" tabindex="500" method="POST" action="{{ route('login') }}">
+      <div class="wrapper " >
+        <form class="" id="login" tabindex="500" method="POST" action="{{ route('login') }}">
           @csrf
           <h3>Login</h3>
           <div class="mail">
@@ -45,7 +47,7 @@
         <form id="register" tabindex="502" method="POST" action="{{ route('register') }}">
           @csrf
           <h3>Register</h3>
-          <div class="name">
+          <div class="name ">
             <input type="text" name="name">
             <label>Nome e cognome</label>
           </div>
@@ -71,6 +73,7 @@
       </div>
     </div>
   </div>
+</div>
 
 </section>
   <script src="/register.js"></script>
