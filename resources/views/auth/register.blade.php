@@ -1,14 +1,21 @@
 <x-layout>
   <script  src="https://code.jquery.com/jquery-3.1.1.min.js"  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="  crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" ></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 
   <link rel="stylesheet" href="/register.css">
   <x-slot name=title>{{Route::currentRouteName()}}</x-slot>
 
   @if (Session::has('lavoraConNoi'))
-  <div class="w-100 d-flex justify-content-center ">
+  <div class="w-100 d-flex justify-content-center slide-out-top">
     <div class="alert alert-info text-center px-5 shadow" style="margin-top:15rem; width:fit-content; border-radius:10px; position:absolute; color:#999">{{ Session::get('lavoraConNoi') }}</div>
+  </div>
+  @endif
+
+
+  @if (Session::has('aggiungiannuncio'))
+  <div class="w-100 d-flex justify-content-center slide-out-top">
+    <div class="alert alert-info text-center px-5 shadow" style="margin-top:15rem; width:fit-content; border-radius:10px; position:absolute; color:#999">{{ Session::get('aggiungiannuncio') }}</div>
   </div>
   @endif
 

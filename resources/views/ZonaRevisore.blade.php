@@ -1,87 +1,115 @@
 <x-layout>
-    <h1 class="text-center mt-5 pt-5">Annunci da revisionare</h1>
 
-    <div class="container fluid">
-        <div class="row">
-            <div class="col-12">
+    <link rel="stylesheet" href="/detailad.css">
 
-                @if ($ad_da_revisionare)
-                   <p class="text-center">Ecco le Annunci Da revisionare</p>
-                @else
-                   <p class="text-center">Non Ci sono Annunci Da revisionare</p>   
-                @endif
 
+    @if (session('message'))
+    <div class="w-100 d-flex justify-content-center  slide-out-top">
+        <div class="alert alert-info text-center px-5 shadow" style="margin-top:10rem; width:fit-content; border-radius:10px; position:absolute; color:#999">{{ session('message') }}</div>
+      </div>
+    @endif
+
+    @if (!$ad_da_revisionare)
+    <div class="container-fluid">
+        <div class="row vh-100">
+            <div class="col-12  d-flex justify-content-center align-items-center">
+                <h1 class="text-center display-1">Non ci sono annunci da revisionare</h1>
             </div>
         </div>
     </div>
+    @else
 
-    @if (session('message'))
-      <div class="alert alert-success">
-           {{ session('message') }}
-       </div>
-   @endif
 
-    <div class="container fluid">
-        <div class="row">
-            <div class="col-12">
+    <div class="container fluid ">
+        <div class="row " style="height: 90vh">
+            <div class="col-12 d-flex flex-column align-items-center ">
 
                 @if($ad_da_revisionare)
 
-                      <p class="text-center">{{$ad_da_revisionare->title}}</p>
+                <div class = "card-wrapper d-flex flex-column">
+                    <h1 class="text-center mb-5">Ecco gli annunci da revisionare</h1>
+                    <div class = "card w-100" style="border: 0px; border-radius: 0px">
+                        <!-- card left -->
+                        <div class = "product-imgs">
+                            <div class = "img-display">
+                                <div class = "img-showcase">
+                                    <img src = "https://picsum.photos/200" alt = "shoe image">
+                                    <img src = "https://picsum.photos/201" alt = "shoe image">
+                                    <img src = "https://picsum.photos/202" alt = "shoe image">
+                                    <img src = "https://picsum.photos/203" alt = "shoe image">
+                                </div>
+                            </div>
+                            <div class = "img-select">
+                                <div class = "img-item">
+                                    <a href = "#" data-id = "1">
+                                        <img src = "https://picsum.photos/200" alt = "shoe image">
+                                    </a>
+                                </div>
+                                <div class = "img-item">
+                                    <a href = "#" data-id = "2">
+                                        <img src = "https://picsum.photos/201" alt = "shoe image">
+                                    </a>
+                                </div>
+                                <div class = "img-item">
+                                    <a href = "#" data-id = "3">
+                                        <img src = "https://picsum.photos/202" alt = "shoe image">
+                                    </a>
+                                </div>
+                                <div class = "img-item">
+                                    <a href = "#" data-id = "4">
+                                        <img src = "https://picsum.photos/203" alt = "shoe image">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card right -->
+                        <div class = "product-content">
+                            <h2 class = "product-title">{{ $ad_da_revisionare->title }}</h2>
+                            <p  class = "product-link">{{ $ad_da_revisionare->category->name }}</p>
 
-                      <p class="text-center" >{{$ad_da_revisionare->price}}</p>
-                      
-                      <p class="text-center">{{$ad_da_revisionare->description}}</p>
 
-                   {{-- carousello inzio  --}}
-                <div id="carouselExample" class="carousel slide">
+                            <div class = "product-price">
+                                <p class = "new-price mb-5">Price: <span>${{ $ad_da_revisionare->price }}</span></p>
+                            </div>
 
-                   <div class="carousel-inner">
-                        <div class="carousel-item active">
-                          <img src="https://picsum.photos/100" class="d-block w-100 " alt="...">
-                       </div>
-                         
-                    <div class="carousel-item">
-                        <img src="https://picsum.photos/100" class="d-block w-100 " alt="...">
+                            <div class = "product-detail">
+                                <h2 class="m-0 p-0">about this item: </h2>
+                                <p class="m-0 p-0 mb-5">{{ $ad_da_revisionare->description }}</p>
+
+                                <p class="m-0 p-0 mb-5">Created by {{ $ad_da_revisionare->user->name }}</p>
+
+
+                                <section class="d-flex">
+                                    <form class="me-3" method="POST"  action="{{route('revisor.accept_ad',['ad'=>$ad_da_revisionare])}}">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn btn-primary">Acceta</button>
+                                    </form>
+
+                                    <form method="POST"  action="{{route('revisor.reject_ad',['ad'=>$ad_da_revisionare])}}">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn btn-primary">Rifiuta</button>
+                                    </form>
+
+                                </section>
+                            </div>
+                        </div>
                     </div>
 
-                     <div class="carousel-item">
-                         <img src="https://picsum.photos/100" class="d-block w-100" alt="...">
-                    </div>
-                 </div>
+                    {{-- carousello fine  --}}
 
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
+                    {{-- form inzio  --}}
 
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                     </button>
+
+
+                    {{-- form fine  --}}
+                    @endif
 
                 </div>
-
-                   {{-- carousello fine  --}}
-
-                   {{-- form inzio  --}}
-                   <form method="POST"  action="{{route('revisor.accept_ad',['ad'=>$ad_da_revisionare])}}">
-                    @csrf
-                    @method('PATCH')
-                    <button type="submit" class="btn btn-primary">Acceta</button> 
-                   </form>
-
-                   <form method="POST"  action="{{route('revisor.reject_ad',['ad'=>$ad_da_revisionare])}}">
-                    @csrf
-                    @method('PATCH')
-                    <button type="submit" class="btn btn-primary">Rifiuta</button> 
-                   </form>
-
-
-                   {{-- form fine  --}}
-                @endif
-                
             </div>
         </div>
     </div>
+    @endif
+    <script src="/detailad.js"></script>
 </x-layout>

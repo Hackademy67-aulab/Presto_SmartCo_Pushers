@@ -9,10 +9,11 @@ class Category extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'name'
+        'name',
+        'img'
     ];
 
-    
+
     // public function user(){
 
     //     return $this-> belongsTo(User::class);

@@ -1,10 +1,6 @@
 <x-layout>
   <link rel="stylesheet" href="/detailad.css">
-  <div class="container">
-  <a href="{{ route('homePage') }}" style="text-decoration: none">HOME</a>
-  <a href="{{ route('showad') }}" style="text-decoration: none">TUTTI GLI ANNUNCI</a>
-  <a href="" style="text-decoration: none">{{ $ad->title }}</a>
-  </div>
+
 
   <div class = "card-wrapper d-flex flex-column">
     <h1 class="mb-5">Product details</h1>

@@ -22,30 +22,29 @@ class RevisorController extends Controller
     public function accettaad(Ad $ad){
 
         $ad->setAccepted(true);
-        return redirect()->back()->with('message', 'Complimenti hai accetato l/anunncio');
+        return redirect()->back()->with('message', "Complimenti hai accettato l'anunncio");
 
     }
 
     public function rifiutaad(Ad $ad){
 
         $ad->setAccepted(false);
-        return redirect()->back()->with('message', 'Complimenti hai rifiutato l/anunncio');
+        return redirect()->back()->with('message', "Hai rifiutato l'annuncio");
 
     }
 
     public function becomerevisor(){
         if (!Auth::user()) {
             Session::flash('lavoraConNoi', "Per poter entrare a far parte del nostro team, devi prima registrati");
-            return view('auth.register');
+            return false;
         }else{
             Mail::to("hello@example.com")->send(new BecomeRevisor(Auth::user()));
-
-            return redirect()->back()->with('message', 'Complimenti, hai richiesto di diventare Revisor correttamente');
+            return true;
         }
     }
 
     public function makerevisor(User $user){
         Artisan::call('smartco:MakeUserRevisor', ["email"=>$user->email]);
-        return redirect('/')->with('message', 'Complimenti un nuovo utente è diventato revisore');
+        return redirect('/')->with('message', 'Complimenti! Sei diventato un revisore del sito');
     }
 }

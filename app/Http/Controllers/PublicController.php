@@ -2,29 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use App\Models\Ad;
 use App\Models\Category;
 use Illuminate\Contracts\Session\Session as ContractsSessionSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session as FacadesSession;
-use Session;
 use Symfony\Component\HttpFoundation\Session\Session as SessionSession;
 
 class PublicController extends Controller
 {
     public function home () {
-        $ads=Ad::where('is_accepted', true)->take(6)->orderByDesc('created_at')->get();
+        $ads=Ad::where('is_accepted', true)->take(5)->orderByDesc('created_at')->get();
         // $ads=Ad::take(6)->get()->sortByDesc('created_at');
         return view('welcome',compact('ads'));
     }
 
     public function createAds(){
-        return view('createAds');
+        if (!Auth::user()) {
+            Session::flash('aggiungiannuncio', "Per poter creare un annuncio, devi prima registrati");
+            return view('auth.register');
+        }else{
+            return view('createAds');
+        }
     }
 
-    public function categoryAds(Category $category){
-        return view('categoryAds',compact('category'));
+    public function categoryAds(Category $category, Ad $ad){
+        return view('categoryAds',compact('category', 'ad'));
     }
 
     public function detailAd(Ad $ad){
