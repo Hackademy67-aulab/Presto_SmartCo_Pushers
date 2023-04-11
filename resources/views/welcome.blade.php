@@ -122,8 +122,10 @@
             </div>
             {{-- fine sezione4 --}}
 
+            @auth
 
 
+            @if(Auth::user()->is_revisor == 0)
             {{-- popup lavora con noi --}}
             <div class="container-fluid p-5 slide-in-bottom me-5 mb-5 shadow glassbtn" style="width: fit-content; border: 0.1px #C8C8C9 solid; border-radius: 20px;"  id="containerrichiestarevisore">
 
@@ -140,7 +142,8 @@
                 </a>
             </div>
             {{-- fine popup Lavora con noi --}}
-
+            @endif
+            @endauth
 
         </main>
 

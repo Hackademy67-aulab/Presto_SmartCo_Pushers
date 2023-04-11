@@ -37,3 +37,7 @@ Route::get('/rendi-revisore/{user}', [RevisorController::class, 'makerevisor'])-
 
 // Ricerca annuncio
 Route::get('/RicercaAnnuncio',[PublicController::class, 'searchAd'])->name('searchAd');
+
+Route::get('/tornaindietro',[RevisorController::class, 'tornaindietro'])->name('tornaindietro');
+
+Route::patch('/riporta-in-revisione/annuncio/{ad}',[RevisorController::class, 'returnToRevision'])->name('revisor.returnToRevision');

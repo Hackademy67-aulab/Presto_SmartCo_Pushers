@@ -549,8 +549,8 @@ right: 0px;
 }
 
 .slide-out-bottom {
--webkit-animation: slide-out-bottom 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) 3s both;
-        animation: slide-out-bottom 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) 3s both;
+-webkit-animation: slide-out-bottom 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) 0.5s both;
+        animation: slide-out-bottom 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) 0.5s both;
 
 }
 

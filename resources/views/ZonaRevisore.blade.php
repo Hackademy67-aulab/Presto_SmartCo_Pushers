@@ -6,7 +6,7 @@
     @if (session('message'))
     <div class="w-100 d-flex justify-content-center  slide-out-top">
         <div class="alert alert-info text-center px-5 shadow" style="margin-top:10rem; width:fit-content; border-radius:10px; position:absolute; color:#999">{{ session('message') }}</div>
-      </div>
+    </div>
     @endif
 
     @if (!$ad_da_revisionare)
@@ -83,7 +83,7 @@
                                     <form class="me-3" method="POST"  action="{{route('revisor.accept_ad',['ad'=>$ad_da_revisionare])}}">
                                         @csrf
                                         @method('PATCH')
-                                        <button type="submit" class="btn btn-primary">Acceta</button>
+                                        <button type="submit" class="btn btn-primary">Accetta</button>
                                     </form>
 
                                     <form method="POST"  action="{{route('revisor.reject_ad',['ad'=>$ad_da_revisionare])}}">
@@ -97,19 +97,41 @@
                         </div>
                     </div>
 
-                    {{-- carousello fine  --}}
 
-                    {{-- form inzio  --}}
-
-
-
-                    {{-- form fine  --}}
-                    @endif
 
                 </div>
+
+                {{-- carousello fine  --}}
+
+                {{-- form inzio  --}}
+
+
+
+                {{-- form fine  --}}
+                @endif
+
             </div>
         </div>
     </div>
-    @endif
-    <script src="/detailad.js"></script>
+</div>
+@endif
+<div class="col-12">
+    @if($ad_da_reRevisionare)
+    <div class = "product-content">
+
+        <section class="d-flex">
+
+
+            <form method="POST"  action="{{route('revisor.returnToRevision',['ad'=>$ad_da_reRevisionare])}}">
+                @csrf
+                @method('PATCH')
+                <button type="submit" class="btn btn-primary">Ritorna in revisione</button>
+            </form>
+
+        </section>
+    </div>
+</div>
+</div>
+@endif
+<script src="/detailad.js"></script>
 </x-layout>

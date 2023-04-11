@@ -16,7 +16,15 @@ class RevisorController extends Controller
 {
     public function zona_revisore(){
         $ad_da_revisionare=Ad::where('is_accepted', null)->first();
-        return view('ZonaRevisore', compact('ad_da_revisionare'));
+        $ad_da_reRevisionare=Ad::where('is_accepted', 1)->orWhere('is_accepted', 0)->orderBy('updated_at', 'desc')->first();
+        return view('ZonaRevisore', compact('ad_da_revisionare', 'ad_da_reRevisionare'));
+    }
+
+    public function returnToRevision(Ad $ad){
+
+        $ad->setAccepted(NULL);
+        return redirect()->back()->with('message', "Hai riportato l'annuncio in revisione");
+
     }
 
     public function accettaad(Ad $ad){
@@ -31,6 +39,12 @@ class RevisorController extends Controller
         $ad->setAccepted(false);
         return redirect()->back()->with('message', "Hai rifiutato l'annuncio");
 
+    }
+
+    public function tornaindietro(){
+
+        $ad_da_revisionare=Ad::orderByDesc('created_at')->setAccepted(null);
+        return view('ZonaRevisore', compact('ad_da_revisionare'));
     }
 
     public function becomerevisor(){
