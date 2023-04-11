@@ -646,3 +646,8 @@ right: 0px;
 }
 
 /* fine messaggi alert */
+
+.buttonturnback{
+  box-shadow:none;
+  -webkit-box-shadow: 0px 0px 0px 0px;
+}

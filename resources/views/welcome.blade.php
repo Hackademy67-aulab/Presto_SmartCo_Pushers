@@ -6,7 +6,7 @@
     @if (session('message'))
     <div class="w-100 d-flex justify-content-center  slide-out-top">
         <div class="alert alert-info text-center px-5 shadow" style="margin-top:15rem; width:fit-content; border-radius:10px; position:absolute; color:#999">{{ session('message') }}</div>
-      </div>
+    </div>
     @endif
 
 
@@ -98,13 +98,13 @@
         <div class="container-fluid reveal fade-bottom" style="margin-top:10rem">
             <div class="row justify-content-center p" style="height: 100vh">
                 @foreach($categories as $category)
-                    <div class="col-2 d-flex justify-content-center align-items-center" style="background: linear-gradient(90deg, rgba(37,94,224,0) 0%, rgba(0, 0, 0, 0.761) 0%), url('{{ Storage::url("{$category->img}") }}'); background-size: cover; background-repeat: no-repeat; background-position:center; width:30rem">
-                        <div class="wrapper">
-                            <h3 align="center"><a class="effect-underline text-uppercase" href="{{ route('categoryAds', compact('category')) }}" style="text-decoration:none">{{ $category->name }}</a><h1>
-                          </div>
+                <div class="col-2 d-flex justify-content-center align-items-center" style="background: linear-gradient(90deg, rgba(37,94,224,0) 0%, rgba(0, 0, 0, 0.761) 0%), url('{{ Storage::url("{$category->img}") }}'); background-size: cover; background-repeat: no-repeat; background-position:center; width:30rem">
+                    <div class="wrapper">
+                        <h3 align="center"><a class="effect-underline text-uppercase" href="{{ route('categoryAds', compact('category')) }}" style="text-decoration:none">{{ $category->name }}</a><h1>
+                        </div>
 
                     </div>
-                @endforeach
+                    @endforeach
 
                 </div>
             </div>
@@ -121,13 +121,9 @@
                 </div>
             </div>
             {{-- fine sezione4 --}}
-
-            @auth
-
-
-            @if(Auth::user()->is_revisor == 0)
+            @if (Auth::check() && Auth::user()->is_revisor == 1)
             {{-- popup lavora con noi --}}
-            <div class="container-fluid p-5 slide-in-bottom me-5 mb-5 shadow glassbtn" style="width: fit-content; border: 0.1px #C8C8C9 solid; border-radius: 20px;"  id="containerrichiestarevisore">
+            <div class="container-fluid p-5 slide-in-bottom me-5 mb-5 shadow glassbtn" style="visibility:hidden; width: fit-content; border: 0.1px #C8C8C9 solid; border-radius: 20px;"  id="containerrichiestarevisore">
 
                 <p class="m-0 p-0 text-center">Ei, vuoi entrare a far parte <br> del nostro team?</p>
                 <hr class="my-5">
@@ -142,8 +138,36 @@
                 </a>
             </div>
             {{-- fine popup Lavora con noi --}}
+            @else
+            <div class="container-fluid p-5 slide-in-bottom me-5 mb-5 shadow glassbtn" style=" width: fit-content; border: 0.1px #C8C8C9 solid; border-radius: 20px;"  id="containerrichiestarevisore">
+
+                <p class="m-0 p-0 text-center">Ei, vuoi entrare a far parte <br> del nostro team?</p>
+                <hr class="my-5">
+                <p class="mb-5  mx-0 p-0 text-center">Clicca qui sotto </p>
+
+                <a href="javascript:;" class="m-0 p-0" style="text-decoration: none; color:#000000">
+                    <div class="container-fluid d-flex justify-content-center " id="bottonerichiestarevisore">
+                        <button class="expand" id="btn">
+                            Submit
+                            <span class="expand-icon expand-hover">
+                                <svg class="first" xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 32 32" version="1.1">
+                                    <path d="M8.489 31.975c-0.271 0-0.549-0.107-0.757-0.316-0.417-0.417-0.417-1.098 0-1.515l14.258-14.264-14.050-14.050c-0.417-0.417-0.417-1.098 0-1.515s1.098-0.417 1.515 0l14.807 14.807c0.417 0.417 0.417 1.098 0 1.515l-15.015 15.022c-0.208 0.208-0.486 0.316-0.757 0.316z" />
+                                </svg>
+                                <span class="loader"></span>
+                                <svg class="second" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
+                                    <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 5L8 15l-5-4" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </a>
+            </div>
             @endif
-            @endauth
+
+
+
+
+
 
         </main>
 
@@ -156,10 +180,143 @@
                 btnText.innerHTML = "Grazie!";
                 btn.classList.add("grazie");
             };
+
+            document.querySelector("button.expand").addEventListener(
+            "click",
+            function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const button = e.currentTarget;
+                button.classList.add("loading");
+                button.disabled = true;
+                setTimeout(() => {
+                    button.classList.add("loaded");
+                    setTimeout(() => {
+                        button.classList.add("finished");
+                        setTimeout(() => {
+                            button.classList.remove("finished");
+                            button.classList.remove("loaded");
+                            button.classList.remove("loading");
+                            button.disabled = false;
+                        }, 1500);
+                    }, 700);
+                }, 1500);
+            },
+            false
+            );
+
         </script>
         @endauth
 
         {{-- fine popup Lavora con noi --}}
 
+
+        <style>
+            button.expand {
+	--button-height: 48px;
+	overflow: hidden;
+	outline: none;
+	background-color: #1f2024;
+	border-radius: 10px;
+	padding: 12px 25px;
+	font-size: 1.1em;
+	border: none;
+	color: white;
+	font-family: "Nunito", sans-serif;
+	cursor: pointer;
+	position: relative;
+	transition: padding 0.3s;
+}
+
+.expand-icon {
+	--icon-size: 10px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: var(--button-height);
+	width: var(--button-height);
+	border-left: 1px solid #eee;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transform: translateX(calc(var(--button-height) + 1px));
+	transition: transform 0.3s;
+}
+
+.expand-icon > svg {
+	height: var(--icon-size);
+	width: var(--icon-size);
+	transform: scale(1.5);
+	transition: transform 0.3s;
+}
+
+.expand-icon > svg.second {
+	display: none;
+	transform: scale(0) translateY(50px);
+	transition: transform 0.3s;
+}
+
+button.expand:hover,
+button.expand.loading {
+	padding-right: calc(25px + var(--button-height));
+}
+
+button.expand:hover > .expand-icon,
+button.expand.loading > .expand-icon {
+	transform: translateX(0);
+	transition: transform 0.3s 0.05s;
+}
+
+button.expand.loading > .expand-icon > svg {
+	transform: scale(0);
+}
+
+@keyframes rotate {
+	0% {
+		transform: scale(0.3) rotateZ(0deg);
+	}
+	100% {
+		transform: scale(0.3) rotateZ(360deg);
+	}
+}
+
+.loader {
+	--loader-size: 52px;
+	height: var(--loader-size);
+	width: var(--loader-size);
+	border: 4px solid white;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	background-color: transparent;
+	border-radius: 50%;
+	animation: rotate 1.5s linear infinite;
+	position: absolute;
+	right: 0;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 1s 0.3s;
+}
+
+button.expand.loading > span > span.loader {
+	opacity: 1;
+}
+
+button.expand.loaded > span > span.loader {
+	opacity: 0 !important;
+}
+
+button.expand.loaded > .expand-icon > svg.first {
+	display: none;
+}
+
+button.expand.loaded > .expand-icon > svg.second {
+	display: block;
+}
+
+button.expand.finished > .expand-icon > svg.second {
+	transform: scale(1.5) translateY(0px);
+}
+        </style>
 
     </x-layout>

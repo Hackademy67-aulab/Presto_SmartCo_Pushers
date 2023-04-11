@@ -27,7 +27,7 @@
                 @if($ad_da_revisionare)
 
                 <div class = "card-wrapper d-flex flex-column">
-                    <h1 class="text-center mb-5">Ecco gli annunci da revisionare</h1>
+                    <h1 class="mb-5 w-100">Ecco gli annunci da revisionare</h1>
                     <div class = "card w-100" style="border: 0px; border-radius: 0px">
                         <!-- card left -->
                         <div class = "product-imgs">
@@ -83,16 +83,25 @@
                                     <form class="me-3" method="POST"  action="{{route('revisor.accept_ad',['ad'=>$ad_da_revisionare])}}">
                                         @csrf
                                         @method('PATCH')
-                                        <button type="submit" class="btn btn-primary">Accetta</button>
+                                        <button type="submit" class="btn btn-success">Accetta</button>
                                     </form>
 
                                     <form method="POST"  action="{{route('revisor.reject_ad',['ad'=>$ad_da_revisionare])}}">
                                         @csrf
                                         @method('PATCH')
-                                        <button type="submit" class="btn btn-primary">Rifiuta</button>
+                                        <button type="submit" class="btn text-white bg-danger text-emphasis-danger">Rifiuta</button>
                                     </form>
 
+
+
                                 </section>
+                                @if($ad_da_reRevisionare)
+                                <form  method="POST" class="mt-3" action="{{route('revisor.returnToRevision',['ad'=>$ad_da_reRevisionare])}}">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="btn text-white bg-primary text-emphasis-danger">Annulla l'ultima operazione</button>
+                                </form>
+                            @endif
                             </div>
                         </div>
                     </div>
@@ -115,23 +124,6 @@
     </div>
 </div>
 @endif
-<div class="col-12">
-    @if($ad_da_reRevisionare)
-    <div class = "product-content">
 
-        <section class="d-flex">
-
-
-            <form method="POST"  action="{{route('revisor.returnToRevision',['ad'=>$ad_da_reRevisionare])}}">
-                @csrf
-                @method('PATCH')
-                <button type="submit" class="btn btn-primary">Ritorna in revisione</button>
-            </form>
-
-        </section>
-    </div>
-</div>
-</div>
-@endif
 <script src="/detailad.js"></script>
 </x-layout>

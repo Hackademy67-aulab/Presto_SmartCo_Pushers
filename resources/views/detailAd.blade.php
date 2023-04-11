@@ -3,7 +3,7 @@
 
 
   <div class = "card-wrapper d-flex flex-column">
-    <h1 class="mb-5">Product details</h1>
+    <h1 class="mb-5 w-100">Product details</h1>
     <div class = "card w-100" style="border: 0px; border-radius: 0px">
       <!-- card left -->
       <div class = "product-imgs">
@@ -59,13 +59,9 @@
           </ul>
         </div>
 
-        <div class = "purchase-info">
-          <button type = "button" class = "btn">
-            Add to Cart <i class = "fas fa-shopping-cart"></i>
-          </button>
-        </div>
 
-        <div class = "social-links">
+
+        <div class = "social-links mt-5">
           <p class="m-0 p-0 me-3">Share At: </p>
           <a href = "#">
             <i class = "fab fa-facebook-f"></i>

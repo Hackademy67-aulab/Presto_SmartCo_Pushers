@@ -15,8 +15,13 @@
                 </div>
 
         @empty
-    </div>
-        <p>Non ci sono annunci</p>
+        <div class="container-fluid">
+            <div class="row vh-100">
+                <div class="col-12  d-flex justify-content-center align-items-center">
+                    <h1 class="text-center display-1">Non ci sono Annunci Da revisionare</h1>
+                </div>
+            </div>
+        </div>
         @endforelse
     </div>
 </x-layout>

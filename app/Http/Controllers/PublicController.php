@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use App\Models\Ad;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Contracts\Session\Session as ContractsSessionSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,10 +14,10 @@ use Symfony\Component\HttpFoundation\Session\Session as SessionSession;
 
 class PublicController extends Controller
 {
-    public function home () {
-        $ads=Ad::where('is_accepted', true)->take(5)->orderByDesc('created_at')->get();
+    public function home (User $user) {
+        $ads=Ad::where('is_accepted', true)->take(7)->orderByDesc('created_at')->get();
         // $ads=Ad::take(6)->get()->sortByDesc('created_at');
-        return view('welcome',compact('ads'));
+        return view('welcome',compact('ads', 'user'));
     }
 
     public function createAds(){
