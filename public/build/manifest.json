@@ -1,0 +1,29 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-c8eb55cc.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/imgcss/bgheader.png": {
+    "file": "assets/bgheader-bb6e6302.png",
+    "src": "resources/imgcss/bgheader.png"
+  },
+  "resources/imgcss/sezione3.png": {
+    "file": "assets/sezione3-afc68e21.png",
+    "src": "resources/imgcss/sezione3.png"
+  },
+  "resources/imgcss/video-bg.png": {
+    "file": "assets/video-bg-e96e9c34.png",
+    "src": "resources/imgcss/video-bg.png"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-8cdc5d81.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/scss/app.scss": {
+    "file": "assets/app-e71329ce.css",
+    "isEntry": true,
+    "src": "resources/scss/app.scss"
+  }
+}
