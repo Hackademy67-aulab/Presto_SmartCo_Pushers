@@ -47,6 +47,12 @@ class PublicController extends Controller
         return view('ad.showad',compact('ads'));
     }
 
+    public function setLanguage($lang){
+
+        session()->put('locale',$lang);
+        return redirect()->back();
+
+    }
 
 
 }

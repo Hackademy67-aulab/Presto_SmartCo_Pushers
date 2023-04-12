@@ -41,3 +41,6 @@ Route::get('/RicercaAnnuncio',[PublicController::class, 'searchAd'])->name('sear
 Route::get('/tornaindietro',[RevisorController::class, 'tornaindietro'])->name('tornaindietro');
 
 Route::patch('/riporta-in-revisione/annuncio/{ad}',[RevisorController::class, 'returnToRevision'])->name('revisor.returnToRevision');
+
+Route::post('/lingua/{lang}', [PublicController::class, 'setLanguage'])->name('setLocale');
+

@@ -12,13 +12,12 @@
           <a class=" p-3 nav-link active text-white" style="font-size:1.5rem" aria-current="page" href="{{route('homePage')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class=" p-3 nav-link text-white" style="font-size:1.5rem" href="{{ route('showad') }}">Tutti gli annunci</a>
+          <a class=" p-3 nav-link text-white" style="font-size:1.5rem" href="{{ route('showad') }}">{{__('ui.annunci')}}</a>
         </li>
 
 
-
         <li class="nav-item">
-          <a class=" p-3 nav-link text-white" style="font-size:1.5rem" href="{{route('createAds')}}">Aggiungi annuncio</a>
+          <a class=" p-3 nav-link text-white" style="font-size:1.5rem" href="{{route('createAds')}}">{{__('ui.add')}}</a>
         </li>
 
 
@@ -34,14 +33,14 @@
 
         <li class="nav-item dropdown">
           @auth
-          <a style="font-size:1.5rem" class="  p-3 nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ciao {{ Auth::user()->name }}</a>
+          <a style="font-size:1.5rem" class="  p-3 nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{__('ui.hello')}} {{ Auth::user()->name }}</a>
           <ul class="dropdown-menu text-white" >
             <li><a style=" p-3 font-size:1.5rem" class="dropdown-item" href="#" onclick="event.preventDefault();
               document.querySelector('#form-logout').submit();">Logout</a></li>
               <form id="form-logout" method="POST" action="{{route('logout')}}" class="d-none">@csrf</form>
 
           @else
-          <a style="  font-size:1.5rem" class="p-3 nav-link text-white" href="{{ route('register') }}" >Ciao, accedi</a>
+          <a style="  font-size:1.5rem" class="p-3 nav-link text-white" href="{{ route('register') }}" >{{__('ui.login')}}</a>
 
 
             @endguest
@@ -49,10 +48,15 @@
           </ul>
 
         </li>
+        
+        <li class="nav-item"><x-_locale lang="it" nation="it"/></li>
+        <li class="nav-item"> <x-_locale lang="en" nation="gb"/></li>
+        <li class="nav-item"><x-_locale lang="es" nation="es"/></li>
+         
 
         <form class=" p-3 d-flex" style="width: fit-content" role="search" method="GET" action="{{ route('searchAd') }}">
-          <input  name="searched" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <input  name="searched" class="form-control me-2" type="search" placeholder="{{__('ui.search')}}" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">{{__('ui.search')}}</button>
         </form>
 
       </ul>

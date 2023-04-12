@@ -14,7 +14,7 @@
     <header class="bgheader d-flex flex-column align-items-center justify-content-center text-white">
         <section class="title text-center">
             <img src="/imgblade/logoscritta.png" style="height: 100px" alt="">
-            <h1 class="mt-5" >GET  STARTED  YOUR  SHOPPING</h1>
+            <h1 class="mt-5" >{{__('ui.welcome')}}</h1>
         </section>
     </header>
     {{-- fine header --}}
