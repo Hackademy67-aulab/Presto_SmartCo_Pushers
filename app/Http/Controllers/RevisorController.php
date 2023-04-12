@@ -6,6 +6,7 @@ use App\Models\Ad;
 use App\Models\User;
 use App\Mail\BecomeRevisor;
 use Exception;
+use Hamcrest\Core\AllOf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -14,8 +15,8 @@ use Illuminate\Support\Facades\Session;
 
 class RevisorController extends Controller
 {
-    public function zona_revisore(){
-        $ad_da_revisionare=Ad::where('is_accepted', null)->first();
+    public function zona_revisore(User $user){
+        $ad_da_revisionare=Ad::where('user_id','!=', auth()->id())->where('is_accepted', null)->first();
         $ad_da_reRevisionare=Ad::where('is_accepted', 1)->orWhere('is_accepted', 0)->orderBy('updated_at', 'desc')->first();
         return view('ZonaRevisore', compact('ad_da_revisionare', 'ad_da_reRevisionare'));
     }
@@ -27,23 +28,28 @@ class RevisorController extends Controller
 
     }
 
-    public function accettaad(Ad $ad){
+    public function accettaad(Ad $ad, User $user){
+
 
         $ad->setAccepted(true);
+        $ad->revisorby(Auth::user()->id);
         return redirect()->back()->with('message', "Complimenti hai accettato l'anunncio");
 
     }
 
-    public function rifiutaad(Ad $ad){
+
+
+    public function rifiutaad(Ad $ad, User $user){
 
         $ad->setAccepted(false);
+        $ad->revisorby(Auth::user()->id);
         return redirect()->back()->with('message', "Hai rifiutato l'annuncio");
 
     }
 
     public function tornaindietro(){
 
-        $ad_da_revisionare=Ad::orderByDesc('created_at')->setAccepted(null);
+        $ad_da_revisionare=Ad::where('user_id', auth()->id())->where('is_accepted', 1)->orWhere('is_accepted', 0)->orderBy('updated_at', 'desc')->first();
         return view('ZonaRevisore', compact('ad_da_revisionare'));
     }
 

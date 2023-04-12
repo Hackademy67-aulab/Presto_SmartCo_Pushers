@@ -14,10 +14,17 @@ class Ad extends Model
         'price',
         'description',
         'user_id',
-        'images'
+        'images',
+        'is_revisor_by'
     ];
 
+    // creato da
     public function user(){
+        return $this-> belongsTo(User::class);
+    }
+
+    // revisionato da
+    public function isrevisorby(){
         return $this-> belongsTo(User::class);
     }
 
@@ -36,6 +43,12 @@ class Ad extends Model
 
     public function setAccepted($value){
         $this->is_accepted=$value;
+        $this->save();
+        return true;
+    }
+
+    public function revisorby($id){
+        $this->is_revisor_by=$id;
         $this->save();
         return true;
     }

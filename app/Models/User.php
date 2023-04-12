@@ -43,9 +43,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // creato da
     public function ads(){
-
         return $this-> hasMany(Ad::class);
+    }
 
+    // revisionato da
+    public function adsrevisorby(){
+        return $this-> hasMany(Ad::class);
     }
 }

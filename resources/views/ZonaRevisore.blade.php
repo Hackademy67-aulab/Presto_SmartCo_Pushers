@@ -14,6 +14,13 @@
         <div class="row vh-100">
             <div class="col-12  d-flex justify-content-center align-items-center">
                 <h1 class="text-center display-1">Non ci sono annunci da revisionare</h1>
+                @if($ad_da_reRevisionare)
+                <form  method="POST" class="mt-3" action="{{route('revisor.returnToRevision',['ad'=>$ad_da_reRevisionare])}}">
+                    @csrf
+                    @method('PATCH')
+                    <button type="submit" class="btn text-white bg-primary text-emphasis-danger">Annulla l'ultima operazione</button>
+                </form>
+            @endif
             </div>
         </div>
     </div>
@@ -93,9 +100,8 @@
                                     </form>
 
 
-
                                 </section>
-                                @if($ad_da_reRevisionare)
+                                @if($ad_da_reRevisionare->is_revisor_by == Auth::user()->id)
                                 <form  method="POST" class="mt-3" action="{{route('revisor.returnToRevision',['ad'=>$ad_da_reRevisionare])}}">
                                     @csrf
                                     @method('PATCH')
