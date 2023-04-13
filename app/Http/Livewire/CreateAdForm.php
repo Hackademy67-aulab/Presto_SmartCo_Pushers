@@ -15,14 +15,17 @@ class CreateAdForm extends Component
     public $price;
     public $description;
     public $category;
-    // public $images;
+    public $images = [];
+    public $temporary_images;
+    public $image;
 
     protected $rules= [
         'title' => 'required|min:6',
         'price' => 'required|min:1',
         'description' =>'required|min:10',
-        'category' =>'required'
-        // 'images' =>'required|mimes:jpeg,png,jpg,gif'
+        'category' =>'required',
+        'images.*' =>'image|max:1024',
+        'temporary_images.*' =>'required|image|max:1024'
     ];
 
     protected $messages =[
@@ -33,14 +36,40 @@ class CreateAdForm extends Component
         'description.required'  => 'La descrizione è richiesta',
         'description.min'=> 'La descrizione deve essere di almeno 6 caratteri',
         'category.required'  => 'La categoria è richiesta',
+        'temporary_images.required'=> 'La immagine è richiesta',
+        'temporary_images.*.image'=> 'i file devono essere Immagini',
+        'temporary_images.*.max'=> 'La immagine deve essere dei massimo 1mb',
+        'images.image'=> 'immagine devvono essere immagini',
+        'images.max'=> 'La immagine deve essere dei massimo 1mb',
         // 'images.required'  => 'La immagine è richiesta',
         // 'images.mimes'  => 'La immagine deve essere dei formati jpeg,png,jpg,gif',
 
 
     ];
 
+    public function updateTemporaryImages(){
+        if($this->validate([
+            'temporary_images.*'=> 'image|max:1024'
+        ])){
+            foreach($this->temporary_images as $image){
+                $this->images[]=$image;
+            }
+        }
+
+    }
+
+    public function removeImage($key){
+        if(in_array($key,array_keys($this->images))){
+            unset($this->images[$key]);
+        }
+    }
+
+    
+
     public function store()
     {
+        $this->ad->user()->associate(Auth::user());
+        $this->ad->save();
         $this->validate();
 
         $category=Category::find($this->category);
@@ -52,6 +81,12 @@ class CreateAdForm extends Component
             // 'images'=>$this->images,
             'user_id'=>Auth::user()->id,
         ]);
+        if(count($this->images)){
+
+            foreach ($this->images as $image) {
+                    $this->ad->image()->create(['path'=>$image->store('images', 'public')]);
+          }
+      }
 
         // foreach ($this->images as $image) {
         //     $image->store('public/image');

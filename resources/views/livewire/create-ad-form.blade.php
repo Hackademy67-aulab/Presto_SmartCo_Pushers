@@ -22,12 +22,35 @@
         @error('description') <span class="error">{{$message}}</span> @enderror
     </div>
 
-    {{-- <div class="mb-3">
-        <label for="formFile" class="form-label">Inserisci immagine</label>
-        <input wire:model.lazy="images" multiple class="form-control" type="file" id="formFile" accept="image/jpg,image/jpng,image/webp">
-        @error('images') <span class="error">{{$message}}</span> @enderror
+    {{-- <div class="form-group">
+        <label for="exampleInputPrice">Immagine</label>
+        <input wire:model.lazy="temporary_images" name="images" multiple type="file" class="form-control" id="exampleInputPrice" aria-describedby="priceHelp">
+        @error('temporary_images') <span class="error">{{$message}}</span> @enderror
+    </div> --}}
 
-      </div> --}}
+    <div class="mb-3">
+        <label for="formFile" class="form-label">Inserisci immagine</label>
+        <input wire:model.lazy="temporary_images" name="images" multiple class="form-control" type="file" id="formFile" accept="image/jpg,image/jpng,image/webp">
+        @error('images') <span class="error">{{$message}}</span> @enderror
+    </div>
+
+    @if(!empty($images))
+    @dd($images)
+    <div class="row">
+        <div class="col-12">
+            <p>Foto preview</p>
+            <div class="row">
+                @foreach($images as $key=>$image)
+                <div class="col-12">
+                    <div style="background-image:url({{$image->temporaryUrl()}})"></div>
+                    <button type="button" wire:click='removeImage({{$key}})'>Cancella</button>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>  
+    @endif
+
     <div class="form-group my-4">
     <select wire:model.defer="category" class="form-select" aria-label="Default select example">
         <option selected>Scegli la categoria</option>
