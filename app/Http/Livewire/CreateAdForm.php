@@ -5,8 +5,10 @@ namespace App\Http\Livewire;
 use App\Models\Ad;
 use Livewire\Component;
 use App\Models\Category;
-use Illuminate\Support\Facades\Auth;
+use App\Jobs\ResizeImage;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class CreateAdForm extends Component
 {
@@ -85,8 +87,15 @@ class CreateAdForm extends Component
         if(count($this->images)){
 
             foreach ($this->images as $image) {
-                    $ad->images()->create(['path'=>$image->store('images', 'public')]);
+                    // $ad->images()->create(['path'=>$image->store('images', 'public')]);
+                    $newFileName="ads/{$ad->id}";
+                    $newImage = $ad->images()->create(['path'=>$image->store($newFileName , 'public')]);
+
+                    dispatch(new ResizeImage($newImage->path , 300 , 300));
           }
+
+          File::deleteDirectory(storage_path('/app/livewire-tmp'));
+
       }
 
         // foreach ($this->images as $image) {

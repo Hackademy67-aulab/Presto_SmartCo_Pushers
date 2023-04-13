@@ -40,33 +40,26 @@
                         <div class = "product-imgs">
                             <div class = "img-display">
                                 <div class = "img-showcase">
-                                    <img src = "https://picsum.photos/200" alt = "shoe image">
-                                    <img src = "https://picsum.photos/201" alt = "shoe image">
-                                    <img src = "https://picsum.photos/202" alt = "shoe image">
-                                    <img src = "https://picsum.photos/203" alt = "shoe image">
+
+                                   {{-- @dd($ad_da_revisionare->images) --}}
+
+                                    @if($ad_da_revisionare->images)
+                                    @foreach($ad_da_revisionare->images as $image)
+                                     <img src="{{Storage::url($image->path)}}" alt="">
+                                    @endforeach
+                                    @endif
                                 </div>
                             </div>
-                            <div class = "img-select">
+                            @if($ad_da_revisionare->images)
+                            @foreach($ad_da_revisionare->images as $image)
+                            {{-- <div class = "img-select">
                                 <div class = "img-item">
-                                    <a href = "#" data-id = "1">
-                                        <img src = "https://picsum.photos/200" alt = "shoe image">
-                                    </a>
-                                </div>
-                                <div class = "img-item">
-                                    <a href = "#" data-id = "2">
-                                        <img src = "https://picsum.photos/201" alt = "shoe image">
-                                    </a>
-                                </div>
-                                <div class = "img-item">
-                                    <a href = "#" data-id = "3">
-                                        <img src = "https://picsum.photos/202" alt = "shoe image">
-                                    </a>
-                                </div>
-                                <div class = "img-item">
-                                    <a href = "#" data-id = "4">
-                                        <img src = "https://picsum.photos/203" alt = "shoe image">
-                                    </a>
-                                </div>
+                                    <a href = "#" data-id = "1"> --}}
+                                        <img src="{{$ad_da_revisionare->images()->first()->getUrl(300,300)}}" alt="">
+                                    {{-- </a>
+                                </div> --}}
+                            @endforeach
+                            @endif
                             </div>
                         </div>
                         <!-- card right -->
@@ -101,13 +94,13 @@
 
 
                                 </section>
-                                @if($ad_da_reRevisionare->is_revisor_by == Auth::user()->id)
+                                {{-- @if($ad_da_reRevisionare->is_revisor_by == Auth::user()->id)
                                 <form  method="POST" class="mt-3" action="{{route('revisor.returnToRevision',['ad'=>$ad_da_reRevisionare])}}">
                                     @csrf
                                     @method('PATCH')
                                     <button type="submit" class="btn text-white bg-primary text-emphasis-danger">Annulla l'ultima operazione</button>
                                 </form>
-                            @endif
+                            @endif --}}
                             </div>
                         </div>
                     </div>
@@ -115,6 +108,7 @@
 
 
                 </div>
+                
 
                 {{-- carousello fine  --}}
 
