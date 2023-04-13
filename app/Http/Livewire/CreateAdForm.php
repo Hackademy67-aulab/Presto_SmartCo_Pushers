@@ -47,11 +47,12 @@ class CreateAdForm extends Component
 
     ];
 
-    public function updateTemporaryImages(){
+    public function updateImages(){
         if($this->validate([
             'temporary_images.*'=> 'image|max:1024'
         ])){
-            foreach($this->temporary_images as $image){
+            foreach($this->images as $image){
+                dd($image);
                 $this->images[]=$image;
             }
         }
@@ -61,20 +62,20 @@ class CreateAdForm extends Component
     public function removeImage($key){
         if(in_array($key,array_keys($this->images))){
             unset($this->images[$key]);
+            
         }
+
     }
 
     
 
     public function store()
     {
-        $this->ad->user()->associate(Auth::user());
-        $this->ad->save();
         $this->validate();
 
         $category=Category::find($this->category);
 
-        $category->ads()->create([
+        $ad= $category->ads()->create([
             'title'=>$this->title,
             'price'=>$this->price,
             'description'=>$this->description,
@@ -84,7 +85,7 @@ class CreateAdForm extends Component
         if(count($this->images)){
 
             foreach ($this->images as $image) {
-                    $this->ad->image()->create(['path'=>$image->store('images', 'public')]);
+                    $ad->images()->create(['path'=>$image->store('images', 'public')]);
           }
       }
 

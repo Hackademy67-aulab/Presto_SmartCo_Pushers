@@ -30,19 +30,20 @@
 
     <div class="mb-3">
         <label for="formFile" class="form-label">Inserisci immagine</label>
-        <input wire:model.lazy="temporary_images" name="images" multiple class="form-control" type="file" id="formFile" accept="image/jpg,image/jpng,image/webp">
+        <input wire:model="images" multiple class="form-control" type="file" id="formFile" accept="image/jpg,image/jpng,image/webp">
         @error('images') <span class="error">{{$message}}</span> @enderror
     </div>
 
     @if(!empty($images))
-    @dd($images)
     <div class="row">
         <div class="col-12">
             <p>Foto preview</p>
             <div class="row">
                 @foreach($images as $key=>$image)
                 <div class="col-12">
-                    <div style="background-image:url({{$image->temporaryUrl()}})"></div>
+                    {{$image}}
+                    <!-- <div style="background-image:url({{$image->temporaryUrl()}})"></div> -->
+                    <img src="{{$image->temporaryUrl()}}">
                     <button type="button" wire:click='removeImage({{$key}})'>Cancella</button>
                 </div>
                 @endforeach
