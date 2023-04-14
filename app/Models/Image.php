@@ -21,8 +21,8 @@ class Image extends Model
             return Storage::url($filePath);
         }
         $path =dirname($filePath);
-        $filename = basename($filePath);
-        $file = "{$path}/crop_{$w}x{$h}__{$filename}";
+        $fileName = basename($filePath);
+        $file = "{$path}/crop_{$w}x{$h}_{$fileName}";
 
         return Storage::url($file);
     }
