@@ -9,7 +9,7 @@
       <div class = "product-imgs">
         <div class = "img-display">
           <div class = "img-showcase">
-            <img src = "https://picsum.photos/200" alt = "shoe image">
+            <img src = "{{$ad->images()->first()->getUrl(300,300)}}" alt = "">
             <img src = "https://picsum.photos/201" alt = "shoe image">
             <img src = "https://picsum.photos/202" alt = "shoe image">
             <img src = "https://picsum.photos/203" alt = "shoe image">

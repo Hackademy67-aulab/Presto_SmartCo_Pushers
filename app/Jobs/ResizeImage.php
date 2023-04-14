@@ -20,8 +20,8 @@ class ResizeImage implements ShouldQueue
     private $fileName;
     private $path;
     /**
-     * Create a new job instance.
-     @return void
+     * Create a new job instance.@return void
+
      */
     
 
@@ -35,8 +35,8 @@ class ResizeImage implements ShouldQueue
     }
 
     /**
-     * Execute the job.
-     @return void
+     * Execute the job.@return void
+
      */
 
      
@@ -46,7 +46,7 @@ class ResizeImage implements ShouldQueue
     {
         $w = $this->w;
         $h = $this->h;
-        $srcPath = storage_path() . '/app/asdpublic/' . $this->path . '/' . $this->fileName;
+        $srcPath = storage_path() . '/app/public/' . $this->path . '/' . $this->fileName;
         $destPath = storage_path() . '/app/public/' . $this->path . "/crop_{$w}x{$h}_" . $this->fileName;
 
         $croppedImage = Image::load($srcPath)

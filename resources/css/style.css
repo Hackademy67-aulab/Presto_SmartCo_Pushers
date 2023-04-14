@@ -651,3 +651,9 @@ right: 0px;
   box-shadow:none;
   -webkit-box-shadow: 0px 0px 0px 0px;
 }
+
+.card_custom{
+
+  width: 50%;
+  height: 50%;
+}
