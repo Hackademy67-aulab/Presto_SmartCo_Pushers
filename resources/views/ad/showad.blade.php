@@ -1,8 +1,10 @@
 <x-layout>
     <div class="container-fluid  vh-100 mt-5 pt-5">
     <div class="row justify-content-center align-items-center  h-100">
-        <div class="col-12 col-lg-5 d-flex flex-wrap justify-content-evenly align-items-center">
-        @forelse ($ads as $ad)
+    @forelse ($ads as $ad)
+
+        <div class="col-12 d-flex flex-wrap justify-content-evenly align-items-center card_custom">
+
                 <div class="card p-3" style="width: fit-content">
                     <section class="w-100 d-flex justify-content-center">
                         <img src="https://picsum.photos/200" style=" border-radius: 15px; width:15rem">
@@ -13,7 +15,7 @@
                     <hr style="color: white" class="bg-white">
                     <p class="pspecial">Created by <span class="text-decoration-underline text-dark">{{$ad->user->name}}</span></p>
                 </div>
-
+        </div>
         @empty
         <div class="container-fluid">
             <div class="row vh-100">
@@ -23,5 +25,6 @@
             </div>
         </div>
         @endforelse
+    </div>
     </div>
 </x-layout>
