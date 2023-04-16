@@ -30,7 +30,9 @@
       @forelse ($ads as $ad)
       <div class="card2">
         <div class="image-container w-100" style="height: 85%;">
-          <img src="https://picsum.photos/200" alt="" class="image w-100" style="height:25rem">
+          @if($ad->images)
+          <img src="{{$ad->images->first()->getUrl(300, 300)}}" class="image w-100" style="height:25rem">
+          @endif
         <div class="card-body">
           <div class="middle">
             <p class="pdetail">

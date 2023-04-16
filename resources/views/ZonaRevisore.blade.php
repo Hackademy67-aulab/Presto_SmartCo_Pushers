@@ -13,7 +13,29 @@
 
 
     @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'])
+<style>
+      swiper-container {
+      width: 100%;
+      height: 100%;
+    }
 
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</style>
     @livewireStyles
     <link rel="stylesheet" href="/detailad.css">
   </head>
@@ -44,41 +66,34 @@
             </div>
         </div>
         @else
-<div class = "card-wrapper h-100 d-flex flex-column" style="position: relative; top:25vh">
+<div class = "card-wrapper h-100 d-flex flex-column" style="position: relative; top:27vh">
   <div class = "card ">
     <!-- card left -->
-    <div class = "product-imgs">
-      <div class = "img-display">
-        <div class = "img-showcase">
+            <swiper-container class="mySwiper" pagination="true" pagination-type="progressbar" navigation="true">
             @if($ad_da_revisionare->images)
                 @foreach($ad_da_revisionare->images as $image)
-                <img src="{{$image->getUrl(300,300)}}" alt="">
+
+                  <swiper-slide><img src="{{$image->getUrl(300,300)}}" alt=""></swiper-slide>
+
+
+                <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+
                 @endforeach
             @endif
-        </div>
-      </div>
-        @if($ad_da_revisionare->images)
-            @foreach($ad_da_revisionare->images as $image)
-            <div class = "img-select">
-                <div class = "img-item">
-                  <a href = "#" data-id = "{{$image->id}}">
-                    <img src="{{$image->getUrl(300,300)}}" alt="">
-                  </a>
-                </div>
-            </div>
-            @endforeach
-        @endif
+          </swiper-container>
+
+
     <!-- card right -->
     <div class = "product-content">
       <h2 class = "product-title">{{ $ad_da_revisionare->title }}</h2>
-      <a href = "#" class = "product-link">{{ $ad_da_revisionare->category->name }}</a>
+      <a href = "#" class = "product-link mt-3">{{ $ad_da_revisionare->category->name }}</a>
 
 
       <div class = "product-price">
         <p class = "new-price">Price: <span>${{ $ad_da_revisionare->price }}</span></p>
       </div>
 
-      <div class = "product-detail">
+      <div class = "product-detail text-end mt-5 pt-5">
         <h2>about this item: </h2>
         <p>{{ $ad_da_revisionare->description }}</p>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque harum, voluptatibus odit sapiente voluptates quam aspernatur perferendis explicabo. Temporibus iste dolorum fuga dignissimos delectus beatae corrupti porro a voluptatem nisi.</p>
@@ -91,7 +106,7 @@
     </div>
   </div>
 </div>
-<section class="d-flex mt-5 justify-content-evenly">
+<section class="accettarifiuta d-flex justify-content-evenly" style="margin-top:25rem">
     <form class="me-3" method="POST"  action="{{route('revisor.accept_ad',['ad'=>$ad_da_revisionare])}}">
         @csrf
         @method('PATCH')
@@ -111,7 +126,7 @@
                                 <form  method="POST" class="mt-3" action="{{route('revisor.returnToRevision',['ad'=>$ad_da_reRevisionare])}}">
                                     @csrf
                                     @method('PATCH')
-                                    <button type="submit" class="btn text-white bg-primary text-emphasis-danger" style="position:absolute; top: 15vh; left:2vw">Annulla l'ultima operazione</button>
+                                    <button type="submit" class="btn text-white bg-primary text-emphasis-danger" style="position:absolute; top: 3vh; left:2vw">Annulla l'ultima operazione</button>
                                 </form>
                             @endif
 </div>

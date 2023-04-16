@@ -1,16 +1,18 @@
 let checked = true
 
 // Evento scroll navbar
-let navbar = document.querySelector('.navbar')
+let navbar = document.querySelector('.navbar2')
 
 
 
 window.addEventListener('scroll', () => {
     if(window.scrollY > 0){
-        navbar.classList.add("glass")
+        navbar.style.width="70vw"
+        navbar.style.transition="1s"
+        document.getElementById("myDIV").style.transition = "all 2s";
 
     } else {
-        navbar.classList.remove("glass")
+      navbar.style.width="fit-content"
     }
 })
 // Fine evento scroll navbar

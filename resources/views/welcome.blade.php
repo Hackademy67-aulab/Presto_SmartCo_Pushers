@@ -62,7 +62,11 @@
                 @foreach ($ads as $ad)
                 <div class="card">
                     <div class="image-container w-100" style="height: 85%;">
-                        <img src="https://picsum.photos/200" alt="" class="image w-100 h-100">
+                        @if($ad->images)
+                        @foreach($ad->images as $image)
+                        <img src="{{$image->getUrl(300,300)}}" alt="">
+                        @endforeach
+                        @endif
                         <div class="middle">
                             <p class="pdetail">
                                 <a href="{{ route('detailAd', compact('ad')) }}">
@@ -82,7 +86,7 @@
         {{-- fine carousell --}}
 
         {{-- button view all --}}
-        <section class="d-flex justify-content-center mt-5 pt-3 reveal fade-bottom">
+        <section class="d-flex justify-content-center mb-5 mb-md-5 mt-5 pt-3 reveal fade-bottom">
             <a href="{{ route('showad') }}">
                 <div id="container">
                     <button class="learn-more">
@@ -97,15 +101,15 @@
         {{--fine button view all --}}
         {{-- fine sezione2 --}}
 
-        <div class="swiper-container">
+        <div class="swiper-container2 reveal fade-bottom" style="margin-top: 13rem">
             <div class="swiper-wrapper">
-              <div class="swiper-slide">
+              <div class="swiper-slide2">
                 <div class="container-general2 w-100">
-                  <div class="gallery-wrap wrap-effect-1">
+                  <div class="gallery-wrap wrap-effect-1 ">
                     @foreach($categories as $category)
-                        <div class="item d-flex align-items-center justify-content-center"  style="background: linear-gradient(90deg, rgba(37,94,224,0) 0%, rgba(0, 0, 0, 0.863) 0%), url('{{ Storage::url("{$category->img}") }}');background-size: cover; background-repeat: no-repeat; background-position:center; ">
+                        <div class="carouselimg item d-flex align-items-center justify-content-center"  style="background: linear-gradient(90deg, rgba(37,94,224,0) 0%, rgba(0, 0, 0, 0.863) 0%), url('{{ Storage::url("{$category->img}") }}');background-size: cover; background-repeat: no-repeat; background-position:center; ">
                             <ul>
-                                <li><a class=" text-white text-uppercase" href="{{ route('categoryAds', compact('category')) }}" style="text-decoration:none;">{{ $category->name }}</a></li>
+                                <li><a class="acarousell text-white text-uppercase" href="{{ route('categoryAds', compact('category')) }}" style="text-decoration:none;">{{ $category->name }}</a></li>
                               </ul>
 
 

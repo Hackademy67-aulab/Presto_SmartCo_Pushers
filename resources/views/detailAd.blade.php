@@ -114,7 +114,28 @@
 
 
     @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'])
+    <style>
+      swiper-container {
+      width: 100%;
+      height: 100%;
+    }
 
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
     @livewireStyles
     <link rel="stylesheet" href="/detailad.css">
   </head>
@@ -127,39 +148,18 @@
 <div class = "card-wrapper h-100" style="position: relative; top:7vh">
   <div class = "card ">
     <!-- card left -->
-    <div class = "product-imgs">
-      <div class = "img-display">
-        <div class = "img-showcase">
+    <swiper-container class="mySwiper" pagination="true" pagination-type="progressbar" navigation="true">
+      @if($ad->images)
+          @foreach($ad->images as $image)
 
-          <img src = "https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_1.jpg" alt = "shoe image">
-          <img src = "https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_2.jpg" alt = "shoe image">
-          <img src = "https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_3.jpg" alt = "shoe image">
-          <img src = "https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_4.jpg" alt = "shoe image">
-        </div>
-      </div>
-      <div class = "img-select">
-        <div class = "img-item">
-          <a href = "#" data-id = "1">
-            <img src = "https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_1.jpg" alt = "shoe image">
-          </a>
-        </div>
-        <div class = "img-item">
-          <a href = "#" data-id = "2">
-            <img src = "https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_2.jpg" alt = "shoe image">
-          </a>
-        </div>
-        <div class = "img-item">
-          <a href = "#" data-id = "3">
-            <img src = "https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_3.jpg" alt = "shoe image">
-          </a>
-        </div>
-        <div class = "img-item">
-          <a href = "#" data-id = "4">
-            <img src = "https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_4.jpg" alt = "shoe image">
-          </a>
-        </div>
-      </div>
-    </div>
+            <swiper-slide><img src="{{$image->getUrl(300,300)}}" alt=""></swiper-slide>
+
+
+          <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+
+          @endforeach
+      @endif
+    </swiper-container>
     <!-- card right -->
     <div class = "product-content">
       <h2 class = "product-title">{{ $ad->title }}</h2>
