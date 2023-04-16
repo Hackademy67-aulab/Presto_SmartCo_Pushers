@@ -1,6 +1,7 @@
 <x-layout>
 
 
+
     <x-slot name=title>HomePage</x-slot>
 
     @if (session('message'))
@@ -22,35 +23,36 @@
     <main>
 
         {{-- sezione1 --}}
-        <div class="container shadow-lg p-5 my-5 reveal fade-bottom" style="height: fit-content;">
-            <div class="row">
-                <div class="col-3 text-center" style="border-right:1px solid #dfdfdf">
+        <div class="container  p-5 my-2 my-md-5 reveal fade-bottom" style="height: fit-content;">
+            <div class="row  p-5 shadow-lg">
+                <div class="toglibordo col-md-3 col-12 pb-md-0 pb-4 mb-5 mb-md-0 text-center d-flex flex-column justify-content-center align-items-center" style="border-right:1px solid #dfdfdf">
                     <i class="fa-solid fa-truck-fast fa-2x mb-3" style="color: #000000;"></i>
                     <h5 class="m-0 p-0" style="font-size: 1.2rem">Free Delivery</h5>
                     <p style="color:#777777" class="m-0 p-0">Free Shipping on all order</p>
                 </div>
-                <div class="col-3 text-center" style="border-right:1px solid #dfdfdf">
+                <div class="toglibordo col-md-3 col-12 mb-5 mb-md-0 pb-md-0 pb-4 text-center d-flex flex-column justify-content-center align-items-center" style="border-right:1px solid #dfdfdf">
                     <i class="fa-solid fa-clock-rotate-left fa-2x mb-3" style="color: #000000;"></i>
                     <h5 class="m-0 p-0" style="font-size: 1.2rem">Return Policy</h5>
                     <p style="color:#777777" class="m-0 p-0">Security in the return of orders</p>
                 </div>
-                <div class="col-3 text-center" style="border-right:1px solid #dfdfdf">
+                <div class="toglibordo col-md-3 col-12 mb-5 mb-md-0 pb-md-0 pb-4 text-center d-flex flex-column justify-content-center align-items-center" style="border-right:1px solid #dfdfdf">
                     <i class="fa-solid fa-headset fa-2x mb-3" style="color: #000000;"></i>
                     <h5 class="m-0 p-0" style="font-size: 1.2rem">24/7 Support</h5>
                     <p style="color:#777777" class="m-0 p-0">Full assistance</p>
                 </div>
-                <div class="col-3 text-center">
+                <div class="toglibordo2 col-md-3 col-12 mb-md-0 text-center d-flex flex-column justify-content-center align-items-center">
                     <i class="fa-solid fa-money-check fa-2x mb-3" style="color: #000000;"></i>
                     <h5 class="m-0 p-0" style="font-size: 1.2rem">Secure Payment</h5>
                     <p style="color:#777777" class="m-0 p-0">Transaction security</p>
                 </div>
             </div>
         </div>
+
         {{-- fine sezione1 --}}
 
         {{-- sezione2 --}}
-        <section class="d-flex align-items-center flex-column mt-5 mb-5 reveal fade-bottom">
-            <h1 style="margin-top:5.5rem">Latest product</h1>
+        <section class="d-flex align-items-center flex-column mt-2 mt-md-5 mb-5 reveal fade-bottom">
+            <h1 class="h1sezione2" style="margin-top:5.5rem">Latest product</h1>
             <p style="color:#999">Drag the cards to move them</p>
         </section>
 
@@ -95,19 +97,25 @@
         {{--fine button view all --}}
         {{-- fine sezione2 --}}
 
-        <div class="container-fluid reveal fade-bottom" style="margin-top:10rem">
-            <div class="row justify-content-center p" style="height: 100vh">
-                @foreach($categories as $category)
-                <div class="col-2 d-flex justify-content-center align-items-center" style="background: linear-gradient(90deg, rgba(37,94,224,0) 0%, rgba(0, 0, 0, 0.761) 0%), url('{{ Storage::url("{$category->img}") }}'); background-size: cover; background-repeat: no-repeat; background-position:center; width:30rem">
-                    <div class="wrapper">
-                        <h3 align="center"><a class="effect-underline text-uppercase" href="{{ route('categoryAds', compact('category')) }}" style="text-decoration:none">{{ $category->name }}</a><h1>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="container-general2 w-100">
+                  <div class="gallery-wrap wrap-effect-1">
+                    @foreach($categories as $category)
+                        <div class="item d-flex align-items-center justify-content-center"  style="background: linear-gradient(90deg, rgba(37,94,224,0) 0%, rgba(0, 0, 0, 0.863) 0%), url('{{ Storage::url("{$category->img}") }}');background-size: cover; background-repeat: no-repeat; background-position:center; ">
+                            <ul>
+                                <li><a class=" text-white text-uppercase" href="{{ route('categoryAds', compact('category')) }}" style="text-decoration:none;">{{ $category->name }}</a></li>
+                              </ul>
+
+
                         </div>
-
-                    </div>
                     @endforeach
-
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
 
             <div class="container-fluid">
                 <div class="row sezione3 d-flex justify-content-center secondhand">

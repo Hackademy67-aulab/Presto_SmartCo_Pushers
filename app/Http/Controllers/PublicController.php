@@ -38,7 +38,7 @@ class PublicController extends Controller
     }
 
     public function showad(){
-        $ads=Ad::where('is_accepted', true)->orderByDesc('created_at')->get();
+        $ads= Ad::where('is_accepted',true)->paginate(9);
         return view('ad.showad',compact('ads'));
     }
 

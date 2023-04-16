@@ -52,10 +52,16 @@ img{
     position: relative;
     color: #12263a;
     margin: 1rem 0;
-    border-bottom: 4px solid black;
-    padding-bottom: 0.5rem;
 }
-
+.product-title::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 80px;
+    background: #12263a;
+}
 .product-link{
     text-decoration: none;
     text-transform: uppercase;
@@ -180,10 +186,8 @@ img{
         grid-gap: 1.5rem;
     }
     .card-wrapper{
-        height: 100vh;
         display: flex;
-        justify-content: center;
-        align-items: center;
+
     }
     .product-imgs{
         display: flex;
@@ -194,3 +198,10 @@ img{
         padding-top: 0;
     }
 }
+
+#body2{
+    background: url(/bgshowad.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+  }

@@ -538,3 +538,11 @@ swiper.on('slideChangeTransitionEnd', function () {
     bg.style.height = height + 'px';
     bg.style.transform = 'translateX(' + x + 'px ) translateY(' + y + 'px)';
 });
+
+
+
+$(document).ready(function(){
+  $('.toggle').click(function(){
+      $('.menu').toggleClass('active');
+  });
+});
