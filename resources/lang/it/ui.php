@@ -1,9 +1,9 @@
 <?php
 return[
-    'welcome'=>'BENVENUTO IN SMARTCO',
+    'welcome'=>'Benvenuto in smartco',
     'annunci'=>'Tutti gli annunci',
     'add'=>'Aggiungi annuncio',
     'hello'=>'Ciao',
-    'login'=>'Ciao, accedi',
+    'login'=>'Accedi',
     'search'=>'Cerca'
 ];

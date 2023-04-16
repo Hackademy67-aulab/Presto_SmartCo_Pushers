@@ -4,6 +4,6 @@ return[
     'annunci'=>'All announcements',
     'add'=>'Add annoncements',
     'hello'=>'Hello',
-    'login'=>'Hello, login',
+    'login'=>'Login',
     'search'=>'Search'
 ];

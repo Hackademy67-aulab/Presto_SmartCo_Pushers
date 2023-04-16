@@ -59,7 +59,7 @@
                     <form  method="POST" class="mt-3" action="{{route('revisor.returnToRevision',['ad'=>$ad_da_reRevisionare])}}">
                         @csrf
                         @method('PATCH')
-                        <button type="submit" class="btn text-white bg-primary text-emphasis-danger" style="position:absolute; top: 15vh; left:2vw">Annulla l'ultima operazione</button>
+                        <button type="submit" class="btn text-white bg-primary text-emphasis-danger" style="position:absolute; top: 3.5vh; left:2vw">Annulla l'ultima operazione</button>
                     </form>
                 @endif
                 </div>
@@ -73,7 +73,7 @@
             @if($ad_da_revisionare->images)
                 @foreach($ad_da_revisionare->images as $image)
 
-                  <swiper-slide><img src="{{$image->getUrl(300,300)}}" alt=""></swiper-slide>
+                  <swiper-slide><img src="{{$image->getUrl(350,400)}}" alt=""></swiper-slide>
 
 
                 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
@@ -119,16 +119,18 @@
         <button type="submit" class="btn text-white bg-danger text-emphasis-danger">Rifiuta</button>
     </form>
 
-
+    @if($ad_da_reRevisionare)
+    @if($ad_da_reRevisionare->is_revisor_by == Auth::user()->id)
+                                    <form  method="POST" class="mt-3" action="{{route('revisor.returnToRevision',['ad'=>$ad_da_reRevisionare])}}">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn text-white bg-primary text-emphasis-danger" style="position:absolute; top: 3vh; left:2vw">Annulla l'ultima operazione</button>
+                                    </form>
+                                @endif
+                                @endif
                             @endif
 </div>
-@if($ad_da_reRevisionare->is_revisor_by == Auth::user()->id)
-                                <form  method="POST" class="mt-3" action="{{route('revisor.returnToRevision',['ad'=>$ad_da_reRevisionare])}}">
-                                    @csrf
-                                    @method('PATCH')
-                                    <button type="submit" class="btn text-white bg-primary text-emphasis-danger" style="position:absolute; top: 3vh; left:2vw">Annulla l'ultima operazione</button>
-                                </form>
-                            @endif
+
 </div>
 <script src="/detailad.js"></script>
 

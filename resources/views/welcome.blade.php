@@ -12,10 +12,9 @@
 
 
     {{-- header --}}
-    <header class="bgheader d-flex flex-column align-items-center justify-content-center text-white">
-        <section class="title text-center">
-            <img src="/imgblade/logoscritta.png" style="height: 100px" alt="">
-            <h1 class="mt-5" >{{__('ui.welcome')}}</h1>
+    <header class="bgheader d-flex flex-column align-items-center justify-content- text-white">
+        <section class="title text-center d-flex align-items-center justify-content-center  h-100" >
+            <h1 class="mt-5 w- text-center mb-5 pb-5"  >{{__('ui.welcome')}}</h1>
         </section>
     </header>
     {{-- fine header --}}
@@ -56,16 +55,16 @@
             <p style="color:#999">Drag the cards to move them</p>
         </section>
 
-        {{-- carousel --}}
-        <div class="container bg-white reveal fade-bottom">
+        {{-- carousel pc--}}
+        <div class="sezion2productpc container bg-white reveal fade-bottom">
             <div class="card-carousel bg-white d-flex justify-content-center">
                 @foreach ($ads as $ad)
                 <div class="card">
                     <div class="image-container w-100" style="height: 85%;">
                         @if($ad->images)
-                        @foreach($ad->images as $image)
-                        <img src="{{$image->getUrl(300,300)}}" alt="">
-                        @endforeach
+                        <img src="{{$ad->images->first()->getUrl(350,400)}}" alt="">
+                        @else
+                        <img src="https://picsum.photos/200" alt="">
                         @endif
                         <div class="middle">
                             <p class="pdetail">
@@ -81,12 +80,39 @@
                     <section class="d-flex align-items-end justify-content-center" style="height: 15%"><p>{{ $ad->title }}</p></section>
                 </div>
                 @endforeach
+
             </div>
         </div>
-        {{-- fine carousell --}}
+        {{-- fine carousell pc--}}
+        {{-- carousell sezione2 smartphone --}}
+        <section class="w-100 d-flex flex-column align-items-center carousellsezione2smartphone">
+        @foreach ($ads as $ad)
+                <div class="card mb-5" >
+                    <div class="image-container w-100 d-flex justify-content-center" style="height: 85%;">
+                        @if($ad->images)
+                        <img class="imgproductsm" src="{{$ad->images->first()->getUrl(350,400)}}" alt="">
+                        @else
+                        <img src="https://picsum.photos/200" alt="">
+                        @endif
+                        <div class="middle">
+                            <p class="pdetail">
+                                <a href="{{ route('detailAd', compact('ad')) }}">
+                                    details
+                                    <svg viewBox="0 0 70 36">
+                                        <path d="M6.9739 30.8153H63.0244C65.5269 30.8152 75.5358 -3.68471 35.4998 2.81531C-16.1598 11.2025 0.894099 33.9766 26.9922 34.3153C104.062 35.3153 54.5169 -6.68469 23.489 9.31527" />
+                                    </svg>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <section class="d-flex align-items-end justify-content-center" style="height: 15%"><p class="m-0 p-3">{{ $ad->title }}</p></section>
+                </div>
+                @endforeach
+            </section>
+        {{-- carousell sezione2 smartphone --}}
 
         {{-- button view all --}}
-        <section class="d-flex justify-content-center mb-5 mb-md-5 mt-5 pt-3 reveal fade-bottom">
+        <section class="d-flex justify-content-center mb-5 mb-md-5 mt-md-5 mt-0 pt-3 reveal fade-bottom">
             <a href="{{ route('showad') }}">
                 <div id="container">
                     <button class="learn-more">
@@ -101,7 +127,8 @@
         {{--fine button view all --}}
         {{-- fine sezione2 --}}
 
-        <div class="swiper-container2 reveal fade-bottom" style="margin-top: 13rem">
+        {{-- sezione3 categories pc--}}
+        <div class="categoriespc swiper-container2 reveal fade-bottom" style="margin-top: 13rem">
             <div class="swiper-wrapper">
               <div class="swiper-slide2">
                 <div class="container-general2 w-100">
@@ -109,7 +136,7 @@
                     @foreach($categories as $category)
                         <div class="carouselimg item d-flex align-items-center justify-content-center"  style="background: linear-gradient(90deg, rgba(37,94,224,0) 0%, rgba(0, 0, 0, 0.863) 0%), url('{{ Storage::url("{$category->img}") }}');background-size: cover; background-repeat: no-repeat; background-position:center; ">
                             <ul>
-                                <li><a class="acarousell text-white text-uppercase" href="{{ route('categoryAds', compact('category')) }}" style="text-decoration:none;">{{ $category->name }}</a></li>
+                                <li style="list-style: none;"><a class="acarousell text-white text-uppercase text-center" href="{{ route('categoryAds', compact('category')) }}" style="text-decoration:none;">{{ $category->name }}</a></li>
                               </ul>
 
 
@@ -120,19 +147,25 @@
               </div>
             </div>
           </div>
+        {{-- fine sezione3 categories pc--}}
+        {{-- sezione3 categories smartphone--}}
+        <div class="container-fluid categoriesmartphone">
+            <div class="row">
+                @foreach($categories as $category)
+                <div class="col-12">
+                    <div class="carouselimg2 item d-flex align-items-center justify-content-center"  style="background: linear-gradient(90deg, rgba(37,94,224,0) 0%, rgba(0, 0, 0, 0.863) 0%), url('{{ Storage::url("{$category->img}") }}');background-size: cover; background-repeat: no-repeat; background-position:center; ">
+                        <ul>
+                            <li><a class="acarousell text-white text-uppercase" href="{{ route('categoryAds', compact('category')) }}" style="text-decoration:none;">{{ $category->name }}</a></li>
+                        </ul>
 
-            <div class="container-fluid">
-                <div class="row sezione3 d-flex justify-content-center secondhand">
-                    <div class="col-5 text-end d-flex flex-column justify-content-center align-items-end reveal fade-left">
-                        <h2 class=" display-2 text-uppercase fw-bold ">Second hand effect</h2>
-                        <h3 class=" display-5 text-uppercase fw-bold ">Comprare e vendere l'usato <br> aiuta l'ambiente</h3>
-                        <h5 class="fw-light">Riutilizzare accessori di elettronica permette di risparmiare tonnellate e tonnellate di <br> anidride carbonica ogni anno. Un aiuto al portafoglio e al pianeta.</span></h5>
-                    </div>
-                    <div class="col-5">
+
                     </div>
                 </div>
-            </div>
-            {{-- fine sezione4 --}}
+                @endforeach
+                </div>
+        </div>
+        {{-- fine sezione3 categories smartphone--}}
+
             @if (Auth::check() && Auth::user()->is_revisor == 1)
             {{-- popup lavora con noi --}}
             <div class="container-fluid p-5 slide-in-bottom me-5 mb-5 shadow glassbtn" style="visibility:hidden; width: fit-content; border: 0.1px #C8C8C9 solid; border-radius: 20px;"  id="containerrichiestarevisore">
@@ -177,11 +210,138 @@
             @endif
 
 
-
-
-
-
+            <div class="container-fluid my-5 py-5 feedbacksm">
+                <div class="row">
+                    <div class="col-12 text-center ">
+                        <h3 class="fw-bold">Some Features that Made us Unique</h3>
+                        <p style="color:#777777 !important">Who are in extremely love with eco friendly system.</p>
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-5">
+                    <div class=" col-2 feedback text-center d-flex flex-column align-items-center" style="background: #F9F9FF">
+                        <section class="w-75 p-4 ">
+                            <h5 class="fw-bolder mb-4">William Motta</h5>
+                             <p class="m-0 p-0" style="color:#777777 !important">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, eius. Accusantium vero rerum laborum architecto quod. </p>
+                             <div class="star mt-3">
+                                <span class="fa fa-star checked" style="color:#FFA500"></span>
+                                <span class="fa fa-star checked"style="color:#FFA500"></span>
+                                <span class="fa fa-star" style="color:#FFA500"></span>
+                                <span class="fa fa-star" style="color:#777777"></span>
+                                <span class="fa fa-star" style="color:#777777"></span>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-2  feedback text-center d-flex flex-column align-items-center mx-5" style="background: #F9F9FF">
+                        <section class="w-75 p-4 ">
+                            <h5 class="fw-bolder mb-4">William Motta</h5>
+                             <p class="m-0 p-0" style="color:#777777 !important">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, eius. Accusantium vero rerum laborum architecto quod. </p>
+                             <div class="star mt-3">
+                                <span class="fa fa-star checked" style="color:#FFA500"></span>
+                                <span class="fa fa-star checked"style="color:#FFA500"></span>
+                                <span class="fa fa-star" style="color:#FFA500"></span>
+                                <span class="fa fa-star" style="color:#777777"></span>
+                                <span class="fa fa-star" style="color:#777777"></span>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-2  feedback text-center d-flex flex-column align-items-center" style="background: #F9F9FF">
+                        <section class="w-75 p-4 ">
+                            <h5 class="fw-bolder mb-4">William Motta</h5>
+                             <p class="m-0 p-0" style="color:#777777 !important">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, eius. Accusantium vero rerum laborum architecto quod. </p>
+                             <div class="star mt-3">
+                                <span class="fa fa-star checked" style="color:#FFA500"></span>
+                                <span class="fa fa-star checked"style="color:#FFA500"></span>
+                                <span class="fa fa-star" style="color:#FFA500"></span>
+                                <span class="fa fa-star" style="color:#777777"></span>
+                                <span class="fa fa-star" style="color:#777777"></span>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-5" >
+                    <div class="col-2  feedback text-center d-flex flex-column align-items-center" style="background: #F9F9FF">
+                        <section class="w-75 p-4 ">
+                            <h5 class="fw-bolder mb-4">William Motta</h5>
+                             <p class="m-0 p-0" style="color:#777777 !important">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, eius. Accusantium vero rerum laborum architecto quod. </p>
+                             <div class="star mt-3">
+                                <span class="fa fa-star checked" style="color:#FFA500"></span>
+                                <span class="fa fa-star checked"style="color:#FFA500"></span>
+                                <span class="fa fa-star" style="color:#FFA500"></span>
+                                <span class="fa fa-star" style="color:#777777"></span>
+                                <span class="fa fa-star" style="color:#777777"></span>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-2  feedback text-center d-flex flex-column align-items-center mx-5" style="background: #F9F9FF">
+                        <section class="w-75 p-4 ">
+                            <h5 class="fw-bolder mb-4">William Motta</h5>
+                             <p class="m-0 p-0" style="color:#777777 !important">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, eius. Accusantium vero rerum laborum architecto quod. </p>
+                             <div class="star mt-3">
+                                <span class="fa fa-star checked" style="color:#FFA500"></span>
+                                <span class="fa fa-star checked"style="color:#FFA500"></span>
+                                <span class="fa fa-star" style="color:#FFA500"></span>
+                                <span class="fa fa-star" style="color:#777777"></span>
+                                <span class="fa fa-star" style="color:#777777"></span>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-2  feedback text-center d-flex flex-column align-items-center" style="background: #F9F9FF">
+                        <section class="w-75 p-4 ">
+                            <h5 class="fw-bolder mb-4">William Motta</h5>
+                             <p class="m-0 p-0" style="color:#777777 !important">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, eius. Accusantium vero rerum laborum architecto quod. </p>
+                             <div class="star mt-3">
+                                <span class="fa fa-star checked" style="color:#FFA500"></span>
+                                <span class="fa fa-star checked"style="color:#FFA500"></span>
+                                <span class="fa fa-star" style="color:#FFA500"></span>
+                                <span class="fa fa-star" style="color:#777777"></span>
+                                <span class="fa fa-star" style="color:#777777"></span>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
         </main>
+
+        			<!-- start footer Area -->
+			<footer class="footer-area section-gap mt-md-0 mt-5 pt-md-0 pt-5">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-5 col-md-6 col-sm-6">
+							<div class="single-footer-widget">
+								<h6 class="text-white">About Us</h6>
+								<p style="color:#777777">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.
+								</p>
+								<p style="color:#777777">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad exercitationem tempore voluptatem similique animi blanditiis et sint dolor sunt doloremque quis dolore, temporibus ullam tempora officia maiores ipsa veniam provident!
+								</p>
+
+							</div>
+						</div>
+						<div class="col-lg-5  col-md-6 col-sm-6">
+							<div class="single-footer-widget">
+								<h6 class="text-white">Newsletter</h6>
+								<p style="color:#777777">Stay update with our latest</p>
+								<div class="" id="mc_embed_signup">
+
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+							<div class="single-footer-widget">
+								<h6 class="text-white">Follow Us</h6>
+								<p style="color:#777777">Let us be social</p>
+								<div class="footer-social d-flex align-items-center">
+									<a href="#"><i class="fa-brands fa-facebook fa-2x" style="color: #ffffff;"></i></a>
+									<a href="#"><i class="fa-brands fa-google-plus-g fa-2x mx-3" style="color: #ffffff;"></i></a>
+									<a href="#"><i class="fa-brands fa-twitter fa-2x me-3" style="color: #ffffff;"></i></a>
+									<a href="#"><i class="fa-brands fa-linkedin-in fa-2x" style="color: #ffffff;"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
 
         @auth
         <script type="text/javascript">

@@ -4,6 +4,6 @@ return[
     'annunci'=>'Anuncios',
     'add'=>'Añadir anuncios',
     'hello'=>'Hola',
-    'login'=>'Hola, inicia sesion',
+    'login'=>'Inicia sesion',
     'search'=>'Buscar'
 ];

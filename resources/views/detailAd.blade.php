@@ -143,16 +143,16 @@
 
     <x-navbar/>
 
-    <div id="body2">
+    <div id="body2" style="height: 350vh">
   <section class="p-5 d-flex justify-content-center " style="font-size:1.2rem; margin-top:5rem"><a class="text-secondary" style="text-decoration: none" href="{{ route('homePage') }}">Home</a><span class="mx-3 text-secondary">></span><a class="text-secondary" style="text-decoration: none" href="{{ route('showad') }}">Tutti gli articoli</a><span class="mx-3 text-secondary">></span><p class="m-0 p-0 text-dark">{{ $ad->title }}</p></section>
 <div class = "card-wrapper h-100" style="position: relative; top:7vh">
-  <div class = "card ">
+  <div class = "card " style="height:fit-content">
     <!-- card left -->
     <swiper-container class="mySwiper" pagination="true" pagination-type="progressbar" navigation="true">
       @if($ad->images)
           @foreach($ad->images as $image)
 
-            <swiper-slide><img src="{{$image->getUrl(300,300)}}" alt=""></swiper-slide>
+            <swiper-slide><img src="{{$image->getUrl(350,400)}}" alt="" ></swiper-slide>
 
 
           <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>

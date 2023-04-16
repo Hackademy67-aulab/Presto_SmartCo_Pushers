@@ -18,6 +18,7 @@
 
   </head>
   <body class="fade-in" id="body">
+    <img src="/imgblade/logoscritta.png" class="logo fixed-top" style="height: 60px" alt="">
 
     <x-navbar/>
 

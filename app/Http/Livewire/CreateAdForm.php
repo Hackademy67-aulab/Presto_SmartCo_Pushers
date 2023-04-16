@@ -64,12 +64,12 @@ class CreateAdForm extends Component
     public function removeImage($key){
         if(in_array($key,array_keys($this->images))){
             unset($this->images[$key]);
-            
+
         }
 
     }
 
-    
+
 
     public function store()
     {
@@ -91,7 +91,7 @@ class CreateAdForm extends Component
                     $newFileName="ads/{$ad->id}";
                     $newImage = $ad->images()->create(['path'=>$image->store($newFileName , 'public')]);
 
-                    dispatch(new ResizeImage($newImage->path , 300 , 300));
+                    dispatch(new ResizeImage($newImage->path , 350 , 400));
           }
 
           File::deleteDirectory(storage_path('/app/livewire-tmp'));

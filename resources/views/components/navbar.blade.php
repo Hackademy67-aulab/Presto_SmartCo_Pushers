@@ -63,6 +63,7 @@
     </div>
   </div>
 </nav> --}}
+
   <input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon"/>
   <label for="menu-icon"></label>
   <nav class="nav">
@@ -80,7 +81,7 @@
         <li><a href="#" onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">Logout</a></li>
         <form id="form-logout" method="POST" action="{{route('logout')}}" class="d-none" style="display: none">@csrf</form>
       @else
-        <a href="{{ route('register') }}" >{{__('ui.login')}}</a>
+      <li><a href="{{ route('register') }}" >{{__('ui.login')}}</a></li>
       @endauth
 
       <div class="d-flex justify-content-center">

@@ -14,7 +14,21 @@
   transform: translateY(-50%);
 }
 h1{
+  font-size: 6vw;
+  -webkit-text-stroke: 2px transparent;
+  text-stroke: 2px transparent;
+  font-weight: bold;
+  letter-spacing: -10px;
+  text-shadow: 4px 4px 2px #CECECE;}
 
+.h1sezione2{
+
+    font-size: 2vw;
+    -webkit-text-stroke: 2px transparent;
+    text-stroke: 2px transparent;
+    font-weight: bold;
+    letter-spacing: -3px;
+    text-shadow: 0px 0px 0px #CECECE;
 }
 
 [type="checkbox"]:checked,
@@ -105,7 +119,7 @@ h1{
   z-index: 9;
   overflow: hidden;
   box-shadow: 0 8px 30px 0 rgba(0,0,0,0.3);
-  background-color: #353746;
+  background-color: #04091E;
   animation: border-transform 7s linear infinite;
   transition: top 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),
               right 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),
@@ -217,7 +231,7 @@ h1{
 
 
 .logo {
-  position: absolute;
+  position: fixed;
   top: 60px;
   left: 50px;
   display: block;
@@ -231,28 +245,31 @@ h1{
 }
 
 
+@media screen and (min-width: 640px) {
+.carousellsezione2smartphone{
+  display: none;
+}
 
-@media screen and (max-width: 991px) {
+.categoriesmartphone{
+  display: none;
+}
+
   .menu-icon:checked + label,
   .menu-icon:not(:checked) + label{
-    right: 55px;
+    right: 145px;
   }
   .logo {
     left: 30px;
   }
   .nav{
-    right: 30px;
+    right: 120px;
   }
-  h1{
-    font-size: 9vw;
-    -webkit-text-stroke: 2px transparent;
-    text-stroke: 2px transparent;
-    -webkit-text-fill-color: #ffeba7;
-    text-fill-color: #ffeba7;
-    color: #ffeba7;
-  }
+
   .nav ul li a{
     font-size: 8vh;
+  }
+  .carousellsezione2smartphone{
+    display: none !important;
   }
 }
 
@@ -344,9 +361,10 @@ height: 23rem;
 
 .carouselimg:hover a{
   font-size: 2rem;
-  letter-spacing: 10px;
   transition: 0.5s;
+  transition: 1s !important;
 }
+
 
 .card-carousel {
   --card-width: 80%;
@@ -363,8 +381,26 @@ height: 23rem;
 }
 
 @media screen and (max-width: 640px) {
-  .carouselimg{
-    width: 1rem;
+  .feedbacksm{
+    display: none;
+  }
+  .card{
+    width: 80vw;
+  }
+  .imgproductsm{
+    width: 100%;
+  }
+  .sezion2productpc{
+    display: none;
+  }
+  .logo{
+    height: 40px !important;
+  }
+  .categoriespc{
+    display: none;
+  }
+  .carouselimg2{
+    height: 20rem !important;
   }
   .accettarifiuta{
     margin-top: 30vh !important;
@@ -939,3 +975,44 @@ right: 0px;
   transform: translateY(-0.5rem) scale(1.0125);
   box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
 }
+
+
+.logo{
+  position: fixed;
+  top: 35px;
+  left: 100px;
+}
+
+
+.p1-gradient-bg, .primary-btn, .home-about-area .home-about-right .primary-btn, .single-unique-product:hover .primary-btn, .faq-left .card-header, .single-footer-widget .click-btn, .generic-banner {
+  background-image: -moz-linear-gradient(0deg, #235ee7 0%, #4ae7fa 100%);
+  background-image: -webkit-linear-gradient(0deg, #235ee7 0%, #4ae7fa 100%);
+  background-image: -ms-linear-gradient(0deg, #235ee7 0%, #4ae7fa 100%);
+}
+
+.p1-gradient-color, .footer-social a:hover i, .single-footer-widget .bb-btn {
+  background: -moz-linear-gradient(0deg, #235ee7 0%, #4ae7fa 100%);
+  background: -webkit-linear-gradient(0deg, #235ee7 0%, #4ae7fa 100%);
+  background: -ms-linear-gradient(0deg, #235ee7 0%, #4ae7fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-gap {
+  padding: 120px 0;
+  background-color: #04091E;
+}
+.feedback{
+  cursor: pointer;
+}
+.feedback:hover{
+  background-color: white !important;
+  -webkit-box-shadow: 0px 0px 30px 8px rgba(189,193,255,0.37);
+  box-shadow: 0px 0px 30px 8px rgba(189,193,255,0.37);
+  transition: 0.3s;
+}
+
+
+
+* {
+  font-family: 'Roboto Condensed', sans-serif;}
