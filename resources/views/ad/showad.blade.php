@@ -23,7 +23,7 @@
 
 
 <div class=" showadbg">
-  <section class="p-5 d-flex justify-content-center " style="font-size:1.2rem; margin-top:5rem"><a class="text-secondary" style="text-decoration: none" href="{{ route('homePage') }}">Home</a><span class="mx-3 text-secondary">></span><p class="m-0 p-0 text-dark">Tutti gli annunci</p></section>
+  <section class="p-5 d-flex justify-content-center " style="font-size:1.2rem; margin-top:5rem;"><a class="text-secondary" style="text-decoration: none" href="{{ route('homePage') }}">Home</a><span class="mx-3 text-secondary">></span><p class="m-0 p-0 text-dark">Tutti gli annunci</p></section>
 
 <section class="d-flex justify-content-center">
       <section class="container bg d-flex  flex-wrap d-flex justify-content-center align-items-center">
@@ -32,7 +32,7 @@
       <div class="card2">
         <div class="image-container w-100" style="height: 85%;">
           @if($ad->images)
-          <img src="{{$ad->images->first()->getUrl(300, 300)}}" class="image w-100" style="height:25rem">
+          <img src="{{$ad->images->first()->getUrl(350,400)}}" class="image w-100" style="height:25rem">
           @endif
         <div class="card-body">
           <div class="middle">
@@ -50,7 +50,14 @@
       </div>
       </div>
       @empty
-      @endforelse
+      <div class="container-fluid">
+        <div class="row vh-100">
+            <div class="col-12  d-flex justify-content-center align-items-center">
+                <h2 class="text-center display-1" style="position: relative; bottom:200px">Non sono presenti annunci</h1>
+            </div>
+        </div>
+    </div>
+    @endforelse
 
 
 

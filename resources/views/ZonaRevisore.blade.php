@@ -93,7 +93,7 @@
         <p class = "new-price">Price: <span>${{ $ad_da_revisionare->price }}</span></p>
       </div>
 
-      <div class = "product-detail text-end mt-5 pt-5">
+      <div class = "product-detail t mt-5 pt-5">
         <h2>about this item: </h2>
         <p>{{ $ad_da_revisionare->description }}</p>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque harum, voluptatibus odit sapiente voluptates quam aspernatur perferendis explicabo. Temporibus iste dolorum fuga dignissimos delectus beatae corrupti porro a voluptatem nisi.</p>

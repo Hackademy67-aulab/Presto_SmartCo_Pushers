@@ -218,7 +218,20 @@
                     </div>
                 </div>
                 <div class="row justify-content-center mt-5">
-                    <div class=" col-2 feedback text-center d-flex flex-column align-items-center" style="background: #F9F9FF">
+                    <div class=" col-2 feedback text-center d-flex flex-column align-items-center" style="background: #F9F9FF; border-radius: 10px">
+                        <section class="w-75 p-4 ">
+                            <h5 class="fw-bolder mb-4">Elia Mattini</h5>
+                             <p class="m-0 p-0" style="color:#777777 !important">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, eius. Accusantium vero rerum laborum architecto quod. </p>
+                             <div class="star mt-3">
+                                <span class="fa fa-star checked" style="color:#FFA500"></span>
+                                <span class="fa fa-star checked"style="color:#FFA500"></span>
+                                <span class="fa fa-star" style="color:#FFA500"></span>
+                                <span class="fa fa-star" style="color:#777777"></span>
+                                <span class="fa fa-star" style="color:#777777"></span>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-2  feedback text-center d-flex flex-column align-items-center mx-5" style="background: #F9F9FF; border-radius: 10px">
                         <section class="w-75 p-4 ">
                             <h5 class="fw-bolder mb-4">William Motta</h5>
                              <p class="m-0 p-0" style="color:#777777 !important">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, eius. Accusantium vero rerum laborum architecto quod. </p>
@@ -231,22 +244,9 @@
                             </div>
                         </section>
                     </div>
-                    <div class="col-2  feedback text-center d-flex flex-column align-items-center mx-5" style="background: #F9F9FF">
+                    <div class="col-2  feedback text-center d-flex flex-column align-items-center" style="background: #F9F9FF; border-radius: 10px">
                         <section class="w-75 p-4 ">
-                            <h5 class="fw-bolder mb-4">William Motta</h5>
-                             <p class="m-0 p-0" style="color:#777777 !important">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, eius. Accusantium vero rerum laborum architecto quod. </p>
-                             <div class="star mt-3">
-                                <span class="fa fa-star checked" style="color:#FFA500"></span>
-                                <span class="fa fa-star checked"style="color:#FFA500"></span>
-                                <span class="fa fa-star" style="color:#FFA500"></span>
-                                <span class="fa fa-star" style="color:#777777"></span>
-                                <span class="fa fa-star" style="color:#777777"></span>
-                            </div>
-                        </section>
-                    </div>
-                    <div class="col-2  feedback text-center d-flex flex-column align-items-center" style="background: #F9F9FF">
-                        <section class="w-75 p-4 ">
-                            <h5 class="fw-bolder mb-4">William Motta</h5>
+                            <h5 class="fw-bolder mb-4">Alessio Pepe</h5>
                              <p class="m-0 p-0" style="color:#777777 !important">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, eius. Accusantium vero rerum laborum architecto quod. </p>
                              <div class="star mt-3">
                                 <span class="fa fa-star checked" style="color:#FFA500"></span>
@@ -259,9 +259,9 @@
                     </div>
                 </div>
                 <div class="row justify-content-center mt-5" >
-                    <div class="col-2  feedback text-center d-flex flex-column align-items-center" style="background: #F9F9FF">
+                    <div class="col-2  feedback text-center d-flex flex-column align-items-center" style="background: #F9F9FF; border-radius: 10px">
                         <section class="w-75 p-4 ">
-                            <h5 class="fw-bolder mb-4">William Motta</h5>
+                            <h5 class="fw-bolder mb-4">Pierpaolo Cassano</h5>
                              <p class="m-0 p-0" style="color:#777777 !important">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, eius. Accusantium vero rerum laborum architecto quod. </p>
                              <div class="star mt-3">
                                 <span class="fa fa-star checked" style="color:#FFA500"></span>
@@ -272,9 +272,9 @@
                             </div>
                         </section>
                     </div>
-                    <div class="col-2  feedback text-center d-flex flex-column align-items-center mx-5" style="background: #F9F9FF">
+                    <div class="col-2  feedback text-center d-flex flex-column align-items-center mx-5" style="background: #F9F9FF; border-radius: 10px">
                         <section class="w-75 p-4 ">
-                            <h5 class="fw-bolder mb-4">William Motta</h5>
+                            <h5 class="fw-bolder mb-4">Giacinto Pascazio</h5>
                              <p class="m-0 p-0" style="color:#777777 !important">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, eius. Accusantium vero rerum laborum architecto quod. </p>
                              <div class="star mt-3">
                                 <span class="fa fa-star checked" style="color:#FFA500"></span>
@@ -285,9 +285,9 @@
                             </div>
                         </section>
                     </div>
-                    <div class="col-2  feedback text-center d-flex flex-column align-items-center" style="background: #F9F9FF">
+                    <div class="col-2  feedback text-center d-flex flex-column align-items-center" style="background: #F9F9FF; border-radius: 10px">
                         <section class="w-75 p-4 ">
-                            <h5 class="fw-bolder mb-4">William Motta</h5>
+                            <h5 class="fw-bolder mb-4">Walter Terlizzi</h5>
                              <p class="m-0 p-0" style="color:#777777 !important">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, eius. Accusantium vero rerum laborum architecto quod. </p>
                              <div class="star mt-3">
                                 <span class="fa fa-star checked" style="color:#FFA500"></span>
@@ -303,7 +303,7 @@
         </main>
 
         			<!-- start footer Area -->
-			<footer class="footer-area section-gap mt-md-0 mt-5 pt-md-0 pt-5">
+			<footer class="footer-area section-gap mt-md-0 mt-5 ">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-5 col-md-6 col-sm-6">

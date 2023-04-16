@@ -26,11 +26,13 @@ class CreateAdForm extends Component
         'price' => 'required|min:1',
         'description' =>'required|min:10',
         'category' =>'required',
+        'images' =>'required',
         'images.*' =>'image|max:1024',
         'temporary_images.*' =>'required|image|max:1024'
     ];
 
     protected $messages =[
+        'images.required' => 'L\'immagine è richiesta',
         'title.required' => 'Il titolo è richiesto',
         'title.min' => 'Il titolo deve essere di almeno 6 caratteri',
         'price.required' => 'Il prezzo è richiesto',

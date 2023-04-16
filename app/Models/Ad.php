@@ -34,7 +34,7 @@ class Ad extends Model
     }
 
     public static function  contaAnnunciDaRevisionare(){
-        return Ad::where('is_accepted', null)->count();
+        return Ad::where('is_accepted', null)->where('user_id','!=', auth()->id())->count();
     }
 
     public static function  secisonoannuncidarevisionare(){
