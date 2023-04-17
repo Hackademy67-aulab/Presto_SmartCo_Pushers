@@ -29,7 +29,9 @@
 <section class="d-flex justify-content-center">
       <section class="container bg d-flex  flex-wrap d-flex justify-content-center align-items-center">
     @if($category->ads)
+
     @foreach ($category->ads as $ad)
+    @if($ad->is_accepted == 1)
     <div class="card2">
         <div class="image-container w-100" style="height: 85%;">
           @if($ad->images)
@@ -50,7 +52,7 @@
         </div>
       </div>
       </div>
-
+      @endif
       @endforeach
       @else
 

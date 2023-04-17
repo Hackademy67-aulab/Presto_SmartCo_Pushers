@@ -30,6 +30,8 @@ class PublicController extends Controller
     }
 
     public function categoryAds(Category $category, Ad $ad){
+        
+
         return view('categoryAds',compact('category', 'ad'));
     }
 
