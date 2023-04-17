@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Jobs\GoogleVisionLabelImage;
+use App\Jobs\GoogleVisionSafeSearch;
 use App\Models\Ad;
 use Livewire\Component;
 use App\Models\Category;
@@ -27,7 +29,8 @@ class CreateAdForm extends Component
         'description' =>'required|min:10',
         'category' =>'required',
         'images' =>'required',
-        'images.*' =>'image|max:1024',
+        // 'images.*' =>'image|max:1024',
+        'images.*' =>'mimes:jpg,jpeg,webp,png|max:1024',
         'temporary_images.*' =>'required|image|max:1024'
     ];
 
@@ -43,7 +46,7 @@ class CreateAdForm extends Component
         'temporary_images.required'=> 'La immagine è richiesta',
         'temporary_images.*.image'=> 'i file devono essere Immagini',
         'temporary_images.*.max'=> 'La immagine deve essere dei massimo 1mb',
-        'images.image'=> 'immagine devvono essere immagini',
+        'images.mimes'=> 'immagine devvono essere immagini',
         'images.max'=> 'La immagine deve essere dei massimo 1mb',
         // 'images.required'  => 'La immagine è richiesta',
         // 'images.mimes'  => 'La immagine deve essere dei formati jpeg,png,jpg,gif',
@@ -94,6 +97,8 @@ class CreateAdForm extends Component
                     $newImage = $ad->images()->create(['path'=>$image->store($newFileName , 'public')]);
 
                     dispatch(new ResizeImage($newImage->path , 350 , 400));
+                    dispatch(new GoogleVisionSafeSearch($newImage->id));
+                    dispatch(new GoogleVisionLabelImage($newImage->id));
           }
 
           File::deleteDirectory(storage_path('/app/livewire-tmp'));

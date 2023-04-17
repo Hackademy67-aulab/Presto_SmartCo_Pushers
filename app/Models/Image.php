@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Ad;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

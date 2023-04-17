@@ -37,7 +37,7 @@
 
                     <div class="mb-3 ">
                         <label for="formFile" class="form-label">Inserisci immagine</label>
-                        <input wire:model="images" multiple class="form-control" type="file" id="formFile" accept="image/jpg">
+                        <input wire:model="images" multiple class="form-control" type="file" id="formFile" accept="image/jpg.image/webp">
                         @error('images') <span class="error">{{$message}}</span> @enderror
                     </div>
 

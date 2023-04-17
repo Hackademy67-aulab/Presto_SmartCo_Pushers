@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;800;900&display=swap" rel="stylesheet">
 
 
+
     @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'])
 
     @livewireStyles

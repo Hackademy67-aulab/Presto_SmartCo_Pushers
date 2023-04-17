@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;800;900&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'])
 <style>
@@ -99,6 +101,47 @@
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque harum, voluptatibus odit sapiente voluptates quam aspernatur perferendis explicabo. Temporibus iste dolorum fuga dignissimos delectus beatae corrupti porro a voluptatem nisi.</p>
 
       </div>
+
+
+
+      @if($ad_da_revisionare->images)
+                @foreach($ad_da_revisionare->images as $image)
+                    <h3>Tags</h3>
+                    <div class="p-2">
+                    @if($image->labels)
+                    @foreach($image->labels as $label)
+                    <p>{{$label}}</p>
+
+                    @endforeach
+                    @endif
+                    </div>
+                    </div>
+                    <div class="col-12">
+                    <h4>Revisione Immagini</h4>
+                    <p>Adulti: <span class="{{$image->adult}}"></span></p>
+                    <p>Satira: <span class="{{$image->spoof}}"></span></p>
+                    <p>Medicina: <span class="{{$image->medical}}"></span></p>
+                    <p>Violenza: <span class="{{$image->violence}}"></span></p>
+                    <p>Contenuto ammiccante: <span class="{{$image->racy}}"></span></p>
+                    </div>
+
+@endforeach
+@endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
