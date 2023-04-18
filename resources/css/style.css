@@ -1,6 +1,9 @@
-/* Navbar */
+.inserisciannuncio{
+  background-image: url(/resources/imgcss/inserisciannuncio.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-/* fine Navbar */
 .section-center{
   position: absolute;
   top: 50%;
@@ -381,6 +384,16 @@ height: 23rem;
 }
 
 @media screen and (max-width: 640px) {
+
+  .inserisciannunciorow{
+    height: fit-content !important;
+  }
+  .inserisciannuncio{
+    display: none;
+  }
+  .inserisciannunciocontainer{
+    width: 90vw !important;
+  }
   .feedbacksm{
     display: none;
   }
