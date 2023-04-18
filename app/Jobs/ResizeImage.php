@@ -19,38 +19,43 @@ class ResizeImage implements ShouldQueue
     private $h;
     private $fileName;
     private $path;
+
     /**
-     * Create a new job instance.@return void
+    * Create a new job instance.@return void
+    */
 
-     */
-    
-
-    public function __construct($filePath, $w , $h)
+    public function __construct($filePath, $w, $h)
     {
-        $this->path=dirname($filePath);
-        $this->fileName=basename($filePath);
+        $this->path = dirname($filePath);
+        $this->fileName = basename($filePath);
         $this->w = $w;
         $this->h = $h;
-
     }
 
     /**
-     * Execute the job.@return void
-
-     */
-
-     
-
-
-    public function handle(): void
+    * Execute the job. @return void
+    */
+    public function handle()
     {
         $w = $this->w;
         $h = $this->h;
+
         $srcPath = storage_path() . '/app/public/' . $this->path . '/' . $this->fileName;
         $destPath = storage_path() . '/app/public/' . $this->path . "/crop_{$w}x{$h}_" . $this->fileName;
 
         $croppedImage = Image::load($srcPath)
-            ->crop(Manipulations::CROP_CENTER , $w , $h)
-            ->save($destPath);
+                        ->crop(Manipulations::CROP_CENTER, $w, $h)
+                        ->save($destPath);
+
+
+        $croppedImage2 = Image::load($destPath)
+                        ->watermark(storage_path(). '/app/media/logo.png')
+                        ->watermarkPosition(Manipulations::POSITION_BOTTOM_RIGHT)
+                        ->watermarkHeight(20, Manipulations::UNIT_PERCENT)
+                        ->watermarkWidth(20, Manipulations::UNIT_PERCENT)
+                        ->watermarkPadding(2, 2, Manipulations::UNIT_PERCENT)
+                        ->save($destPath);
+
     }
+
 }
