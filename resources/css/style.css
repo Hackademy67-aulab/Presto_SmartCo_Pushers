@@ -1,5 +1,5 @@
-.inserisciannuncio{
-  background-image: url(/resources/imgcss/inserisciannuncio.jpg);
+.containeraggiungiannuncio{
+  background-image: url(/resources/imgcss/Background_Stock.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
