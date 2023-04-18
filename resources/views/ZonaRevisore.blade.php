@@ -121,11 +121,13 @@
                                 <h3>Tags</h3>
                                 <div class="p-2">
                                   {{-- @dd(json_decode($image->labels)) --}}
+                                  <section class="d-flex">
                                     @if ($image->labels)
                                         @foreach (json_decode($image->labels) as $label)
-                                            <p>{{ $label }}</p>
+                                            <p class="m-0 p-0">{{ $label }}, </p>
                                         @endforeach
                                     @endif
+                                  </section>
                                 </div>
                     </div>
                     <div class="col-12">
